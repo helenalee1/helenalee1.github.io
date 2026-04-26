@@ -1,937 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Ricoh Canada — Helena Lee Portfolio</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap');
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      background: #F4F1ED;
-      color: #1C2B3A;
-      -webkit-font-smoothing: antialiased
-    }
-
-    :root {
-      --sky: #C8DCF0;
-      --steel: #7AADD4;
-      --deep: #4A7FA5;
-      --cream: #E8E0D0;
-      --warm: #C9956A;
-      --dark: #1C2B3A;
-      --muted: #6B7F8E;
-      --offwhite: #F4F1ED;
-      --white: #fff;
-      --border: #e2ddd6;
-      --text: #4A5568;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(244, 241, 237, .92);
-      backdrop-filter: blur(12px);
-      border-bottom: .5px solid var(--border);
-      padding: 0 5%;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo {
-      font-family: 'Instrument Serif', serif;
-      font-size: 18px;
-      color: var(--dark);
-      text-decoration: none
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-      align-items: center
-    }
-
-    .nav-links a {
-      font-size: 11px;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .15s
-    }
-
-    .nav-links a:hover {
-      color: var(--dark)
-    }
-
-    .nav-back {
-      font-size: 11px;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: .04em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color .15s
-    }
-
-    .nav-back:hover {
-      color: var(--dark)
-    }
-
-    /* ── PAGE WRAPPER ── */
-    .page {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 80px 24px 80px
-    }
-
-    /* ── CASE HEADER ── */
-    .case-header {
-      background: var(--dark);
-      border-radius: 16px;
-      padding: 36px 36px 32px;
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      pointer-events: none
-    }
-
-    .ch-breadcrumb {
-      font-size: 10px;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      color: var(--steel);
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 2
-    }
-
-    .ch-company {
-      font-size: 10px;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .3);
-      margin-bottom: 8px;
-      position: relative;
-      z-index: 2
-    }
-
-    .ch-title {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(24px, 4vw, 36px);
-      color: #fff;
-      line-height: 1.18;
-      margin-bottom: 10px;
-      position: relative;
-      z-index: 2
-    }
-
-    .ch-title em {
-      font-style: italic;
-      color: var(--sky)
-    }
-
-    .ch-tagline {
-      font-size: 13px;
-      color: rgba(255, 255, 255, .48);
-      line-height: 1.7;
-      max-width: 540px;
-      position: relative;
-      z-index: 2;
-      margin-bottom: 20px;
-      font-weight: 300
-    }
-
-    .ch-pills {
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 2
-    }
-
-    .pill {
-      font-size: 9px;
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid;
-      letter-spacing: .06em
-    }
-
-    .pill-blue {
-      background: rgba(200, 220, 240, .11);
-      border-color: rgba(200, 220, 240, .28);
-      color: var(--sky)
-    }
-
-    .pill-warm {
-      background: rgba(201, 149, 106, .11);
-      border-color: rgba(201, 149, 106, .32);
-      color: #e8b88a
-    }
-
-    .pill-cream {
-      background: rgba(232, 224, 208, .09);
-      border-color: rgba(232, 224, 208, .22);
-      color: #d0c8b5
-    }
-
-    /* ── STATS ── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .stat {
-      background: var(--white);
-      border: .5px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 14px;
-      text-align: center;
-    }
-
-    .stat-num {
-      font-family: 'Instrument Serif', serif;
-      font-size: 28px;
-      color: var(--deep);
-      line-height: 1;
-      margin-bottom: 6px
-    }
-
-    .stat-label {
-      font-size: 9px;
-      color: var(--muted);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      line-height: 1.5
-    }
-
-    /* ── MAIN GRID ── */
-    .case-grid {
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 20px;
-    }
-
-    /* ── SECTION CARD ── */
-    .sec {
-      border: .5px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--white);
-      margin-bottom: 14px;
-    }
-
-    .sec:last-child {
-      margin-bottom: 0
-    }
-
-    .sec-head {
-      padding: 14px 20px 12px;
-      border-bottom: .5px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sec-num {
-      font-family: 'Instrument Serif', serif;
-      font-size: 20px;
-      color: var(--steel)
-    }
-
-    .sec-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--dark)
-    }
-
-    .sec-badge {
-      font-size: 9px;
-      color: var(--muted);
-      margin-left: auto;
-      letter-spacing: .08em;
-      text-transform: uppercase
-    }
-
-    .sec-body {
-      padding: 18px 20px
-    }
-
-    p.body {
-      font-size: 12px;
-      color: var(--text);
-      line-height: 1.78;
-      margin-bottom: 12px
-    }
-
-    p.body:last-child {
-      margin-bottom: 0
-    }
-
-    p.body strong {
-      color: var(--dark);
-      font-weight: 500
-    }
-
-    .hl {
-      background: #f7f4f0;
-      border-radius: 8px;
-      border-left: 2.5px solid var(--steel);
-      padding: 12px 16px;
-      margin: 12px 0;
-      font-size: 11.5px;
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    .hl strong {
-      color: var(--dark);
-      font-weight: 500
-    }
-
-    /* ── EVIDENCE LABEL ── */
-    .evl {
-      font-size: 9px;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 500;
-      margin: 18px 0 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .evl::after {
-      content: '';
-      flex: 1;
-      height: .5px;
-      background: var(--border)
-    }
-
-    /* ── BEFORE / AFTER TABLE ── */
-    .ba-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 12px 0
-    }
-
-    .ba-card {
-      border-radius: 8px;
-      padding: 14px 16px;
-      border: .5px solid
-    }
-
-    .ba-before {
-      background: #fef3f5;
-      border-color: #f4c4c4
-    }
-
-    .ba-after {
-      background: #edf7ed;
-      border-color: #a8d4a8
-    }
-
-    .ba-label {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: 10px
-    }
-
-    .ba-before .ba-label {
-      color: #c0392b
-    }
-
-    .ba-after .ba-label {
-      color: #2d7a2d
-    }
-
-    .ba-item {
-      font-size: 11px;
-      line-height: 1.6;
-      padding: 3px 0;
-      border-bottom: .5px solid rgba(0, 0, 0, .06);
-      display: flex;
-      gap: 7px;
-      align-items: flex-start
-    }
-
-    .ba-item:last-child {
-      border: none
-    }
-
-    .ba-before .ba-item {
-      color: #7a2020
-    }
-
-    .ba-after .ba-item {
-      color: #1a3a1a
-    }
-
-    /* ── STEPS ── */
-    .steps {
-      display: flex;
-      flex-direction: column
-    }
-
-    .step {
-      display: flex;
-      gap: 14px;
-      padding: 12px 0;
-      border-bottom: .5px solid var(--border);
-      align-items: flex-start
-    }
-
-    .step:last-child {
-      border: none;
-      padding-bottom: 0
-    }
-
-    .step-dot {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--sky);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      color: var(--deep);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .step-title {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--dark);
-      margin-bottom: 4px
-    }
-
-    .step-body {
-      font-size: 11.5px;
-      color: var(--text);
-      line-height: 1.68
-    }
-
-    /* ── IMPACT GRID ── */
-    .impact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 4px
-    }
-
-    .impact-block {
-      background: var(--offwhite);
-      border-radius: 8px;
-      padding: 14px 16px
-    }
-
-    .ib-num {
-      font-family: 'Instrument Serif', serif;
-      font-size: 26px;
-      color: var(--deep);
-      margin-bottom: 4px;
-      line-height: 1
-    }
-
-    .ib-label {
-      font-size: 10.5px;
-      color: var(--text);
-      line-height: 1.5
-    }
-
-    /* ── WORKFLOW DIAGRAM ── */
-    .workflow {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      margin: 14px 0;
-      background: var(--offwhite);
-      border: .5px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-      overflow-x: auto;
-    }
-
-    .wf-node {
-      background: var(--white);
-      border: .5px solid var(--border);
-      border-radius: 8px;
-      padding: 9px 12px;
-      text-align: center;
-      flex-shrink: 0;
-      min-width: 88px;
-    }
-
-    .wf-node-hl {
-      background: var(--sky);
-      border-color: var(--steel)
-    }
-
-    .wf-node-hl .wf-node-title {
-      color: var(--dark)
-    }
-
-    .wf-node-result {
-      background: #edf7ed;
-      border-color: #a8d4a8
-    }
-
-    .wf-node-result .wf-node-title {
-      color: #2d7a2d
-    }
-
-    .wf-node-title {
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--dark);
-      margin-bottom: 2px
-    }
-
-    .wf-node-sub {
-      font-size: 8px;
-      color: var(--muted)
-    }
-
-    .wf-arrow {
-      font-size: 14px;
-      color: var(--steel);
-      padding: 0 8px;
-      flex-shrink: 0
-    }
-
-    /* ── VIZ SLOT ── */
-    .viz-slot {
-      border: .5px dashed #c8bfb4;
-      border-radius: 8px;
-      padding: 16px;
-      background: #faf8f5;
-      margin: 14px 0;
-      text-align: center;
-    }
-
-    .vz-title {
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 3px
-    }
-
-    .vz-sub {
-      font-size: 9px;
-      color: #9a9288
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 12px
-    }
-
-    .scard {
-      border: .5px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      background: var(--white)
-    }
-
-    .sc-head {
-      padding: 10px 16px;
-      border-bottom: .5px solid var(--border);
-      font-size: 11.5px;
-      font-weight: 500;
-      color: var(--dark)
-    }
-
-    .sc-body {
-      padding: 10px 16px
-    }
-
-    .sc-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 5px 0;
-      border-bottom: .5px solid var(--border);
-      gap: 8px;
-    }
-
-    .sc-row:last-child {
-      border: none
-    }
-
-    .sc-key {
-      font-size: 10px;
-      color: var(--muted)
-    }
-
-    .sc-val {
-      font-size: 10px;
-      font-weight: 500;
-      text-align: right;
-      color: var(--dark)
-    }
-
-    .skill-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      padding: 10px 16px
-    }
-
-    .skill {
-      font-size: 9px;
-      padding: 3px 9px;
-      border-radius: 20px;
-      background: var(--offwhite);
-      border: .5px solid var(--border);
-      color: var(--dark);
-    }
-
-    .vis-list {
-      padding: 10px 16px
-    }
-
-    .vis-item {
-      font-size: 10px;
-      color: var(--text);
-      padding: 4px 0;
-      border-bottom: .5px solid var(--border);
-      display: flex;
-      gap: 6px;
-      line-height: 1.5;
-    }
-
-    .vis-item:last-child {
-      border: none
-    }
-
-    .vis-note {
-      font-size: 9px;
-      color: var(--muted);
-      line-height: 1.6;
-      padding: 8px 16px;
-      border-top: .5px solid var(--border);
-      background: var(--offwhite);
-    }
-
-    /* ── FOOTER NAV ── */
-    .footer-nav {
-      display: flex;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .fn-btn {
-      flex: 1;
-      padding: 13px 0;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: 500;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-      transition: background .15s;
-      font-family: 'Bricolage Grotesque', sans-serif;
-    }
-
-    .fn-back {
-      border: .5px solid var(--border);
-      color: var(--muted);
-      background: var(--white)
-    }
-
-    .fn-back:hover {
-      background: var(--offwhite)
-    }
-
-    .fn-next {
-      background: var(--dark);
-      color: #fff
-    }
-
-    .fn-next:hover {
-      background: #2d3f54
-    }
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:768px) {
-      .stats-row {
-        grid-template-columns: 1fr 1fr
-      }
-
-      .case-grid {
-        grid-template-columns: 1fr
-      }
-
-      .impact-grid,
-      .ba-grid {
-        grid-template-columns: 1fr
-      }
-
-      .ch-title {
-        font-size: 24px
-      }
-
-      .workflow {
-        flex-wrap: wrap;
-        gap: 6px
-      }
-
-      .wf-arrow {
-        display: none
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ricoh Canada — Helena Lee Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',sans-serif;background:#F4F1ED;color:#1C2B3A;-webkit-font-smoothing:antialiased}
+
+:root{
+  --sky:#C8DCF0;--steel:#7AADD4;--deep:#4A7FA5;
+  --cream:#E8E0D0;--warm:#C9956A;--dark:#1C2B3A;--muted:#6B7F8E;
+  --offwhite:#F4F1ED;--white:#fff;--border:#e2ddd6;
+  --text:#4A5568;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(244,241,237,.92);backdrop-filter:blur(12px);
+  border-bottom:.5px solid var(--border);
+  padding:0 5%;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:18px;color:var(--dark);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--dark)}
+.nav-back{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.04em;display:flex;align-items:center;gap:6px;transition:color .15s}
+.nav-back:hover{color:var(--dark)}
+
+/* ── PAGE WRAPPER ── */
+.page{max-width:960px;margin:0 auto;padding:80px 24px 80px}
+
+/* ── CASE HEADER ── */
+.case-header{
+  background:var(--dark);border-radius:16px;
+  padding:36px 36px 32px;margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+.ch-breadcrumb{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;position:relative;z-index:2}
+.ch-company{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px;position:relative;z-index:2}
+.ch-title{font-family:'Instrument Serif',serif;font-size:clamp(24px,4vw,36px);color:#fff;line-height:1.18;margin-bottom:10px;position:relative;z-index:2}
+.ch-title em{font-style:italic;color:var(--sky)}
+.ch-tagline{font-size:13px;color:rgba(255,255,255,.48);line-height:1.7;max-width:540px;position:relative;z-index:2;margin-bottom:20px;font-weight:300}
+.ch-pills{display:flex;gap:7px;flex-wrap:wrap;position:relative;z-index:2}
+.pill{font-size:9px;padding:4px 12px;border-radius:20px;border:1px solid;letter-spacing:.06em}
+.pill-blue{background:rgba(200,220,240,.11);border-color:rgba(200,220,240,.28);color:var(--sky)}
+.pill-warm{background:rgba(201,149,106,.11);border-color:rgba(201,149,106,.32);color:#e8b88a}
+.pill-cream{background:rgba(232,224,208,.09);border-color:rgba(232,224,208,.22);color:#d0c8b5}
+
+/* ── STATS ── */
+.stats-row{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px;
+}
+.stat{
+  background:var(--white);border:.5px solid var(--border);
+  border-radius:12px;padding:16px 14px;text-align:center;
+}
+.stat-num{font-family:'Instrument Serif',serif;font-size:28px;color:var(--deep);line-height:1;margin-bottom:6px}
+.stat-label{font-size:9px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+
+/* ── MAIN GRID ── */
+.case-grid{
+  display:grid;grid-template-columns:1fr 280px;gap:20px;
+}
+
+/* ── SECTION CARD ── */
+.sec{
+  border:.5px solid var(--border);border-radius:14px;
+  overflow:hidden;background:var(--white);margin-bottom:14px;
+}
+.sec:last-child{margin-bottom:0}
+.sec-head{
+  padding:14px 20px 12px;border-bottom:.5px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+}
+.sec-num{font-family:'Instrument Serif',serif;font-size:20px;color:var(--steel)}
+.sec-title{font-size:13px;font-weight:500;color:var(--dark)}
+.sec-badge{font-size:9px;color:var(--muted);margin-left:auto;letter-spacing:.08em;text-transform:uppercase}
+.sec-body{padding:18px 20px}
+
+p.body{font-size:12px;color:var(--text);line-height:1.78;margin-bottom:12px}
+p.body:last-child{margin-bottom:0}
+p.body strong{color:var(--dark);font-weight:500}
+
+.hl{
+  background:#f7f4f0;border-radius:8px;border-left:2.5px solid var(--steel);
+  padding:12px 16px;margin:12px 0;font-size:11.5px;color:var(--text);line-height:1.7;
+}
+.hl strong{color:var(--dark);font-weight:500}
+
+/* ── EVIDENCE LABEL ── */
+.evl{
+  font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:18px 0 12px;
+  display:flex;align-items:center;gap:8px;
+}
+.evl::after{content:'';flex:1;height:.5px;background:var(--border)}
+
+/* ── BEFORE / AFTER TABLE ── */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.ba-card{border-radius:8px;padding:14px 16px;border:.5px solid}
+.ba-before{background:#fef3f5;border-color:#f4c4c4}
+.ba-after{background:#edf7ed;border-color:#a8d4a8}
+.ba-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.ba-before .ba-label{color:#c0392b}
+.ba-after .ba-label{color:#2d7a2d}
+.ba-item{font-size:11px;line-height:1.6;padding:3px 0;border-bottom:.5px solid rgba(0,0,0,.06);display:flex;gap:7px;align-items:flex-start}
+.ba-item:last-child{border:none}
+.ba-before .ba-item{color:#7a2020}
+.ba-after .ba-item{color:#1a3a1a}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:14px;padding:12px 0;border-bottom:.5px solid var(--border);align-items:flex-start}
+.step:last-child{border:none;padding-bottom:0}
+.step-dot{
+  width:24px;height:24px;border-radius:50%;background:var(--sky);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--deep);font-weight:700;flex-shrink:0;margin-top:2px;
+}
+.step-title{font-size:12px;font-weight:500;color:var(--dark);margin-bottom:4px}
+.step-body{font-size:11.5px;color:var(--text);line-height:1.68}
+
+/* ── IMPACT GRID ── */
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.impact-block{background:var(--offwhite);border-radius:8px;padding:14px 16px}
+.ib-num{font-family:'Instrument Serif',serif;font-size:26px;color:var(--deep);margin-bottom:4px;line-height:1}
+.ib-label{font-size:10.5px;color:var(--text);line-height:1.5}
+
+/* ── WORKFLOW DIAGRAM ── */
+.workflow{
+  display:flex;align-items:center;gap:0;
+  margin:14px 0;background:var(--offwhite);
+  border:.5px solid var(--border);border-radius:10px;
+  padding:14px 16px;overflow-x:auto;
+}
+.wf-node{
+  background:var(--white);border:.5px solid var(--border);
+  border-radius:8px;padding:9px 12px;text-align:center;
+  flex-shrink:0;min-width:88px;
+}
+.wf-node-hl{background:var(--sky);border-color:var(--steel)}
+.wf-node-hl .wf-node-title{color:var(--dark)}
+.wf-node-result{background:#edf7ed;border-color:#a8d4a8}
+.wf-node-result .wf-node-title{color:#2d7a2d}
+.wf-node-title{font-size:10px;font-weight:500;color:var(--dark);margin-bottom:2px}
+.wf-node-sub{font-size:8px;color:var(--muted)}
+.wf-arrow{font-size:14px;color:var(--steel);padding:0 8px;flex-shrink:0}
+
+/* ── VIZ SLOT ── */
+.viz-slot{
+  border:.5px dashed #c8bfb4;border-radius:8px;
+  padding:16px;background:#faf8f5;margin:14px 0;text-align:center;
+}
+.vz-title{font-size:10px;font-weight:500;color:var(--muted);margin-bottom:3px}
+.vz-sub{font-size:9px;color:#9a9288}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:12px}
+.scard{border:.5px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white)}
+.sc-head{padding:10px 16px;border-bottom:.5px solid var(--border);font-size:11.5px;font-weight:500;color:var(--dark)}
+.sc-body{padding:10px 16px}
+.sc-row{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:5px 0;border-bottom:.5px solid var(--border);gap:8px;
+}
+.sc-row:last-child{border:none}
+.sc-key{font-size:10px;color:var(--muted)}
+.sc-val{font-size:10px;font-weight:500;text-align:right;color:var(--dark)}
+.skill-wrap{display:flex;flex-wrap:wrap;gap:5px;padding:10px 16px}
+.skill{
+  font-size:9px;padding:3px 9px;border-radius:20px;
+  background:var(--offwhite);border:.5px solid var(--border);color:var(--dark);
+}
+.vis-list{padding:10px 16px}
+.vis-item{
+  font-size:10px;color:var(--text);padding:4px 0;
+  border-bottom:.5px solid var(--border);display:flex;gap:6px;line-height:1.5;
+}
+.vis-item:last-child{border:none}
+.vis-note{
+  font-size:9px;color:var(--muted);line-height:1.6;padding:8px 16px;
+  border-top:.5px solid var(--border);background:var(--offwhite);
+}
+
+/* ── FOOTER NAV ── */
+.footer-nav{
+  display:flex;gap:12px;margin-top:28px;
+}
+.fn-btn{
+  flex:1;padding:13px 0;border-radius:10px;font-size:12px;font-weight:500;
+  text-align:center;text-decoration:none;display:block;transition:background .15s;
+  font-family:'Bricolage Grotesque',sans-serif;
+}
+.fn-back{border:.5px solid var(--border);color:var(--muted);background:var(--white)}
+.fn-back:hover{background:var(--offwhite)}
+.fn-next{background:var(--dark);color:#fff}
+.fn-next:hover{background:#2d3f54}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .case-grid{grid-template-columns:1fr}
+  .impact-grid,.ba-grid{grid-template-columns:1fr}
+  .ch-title{font-size:24px}
+  .workflow{flex-wrap:wrap;gap:6px}
+  .wf-arrow{display:none}
+}
+</style>
 </head>
-
 <body>
 
-  <!-- NAV -->
-  <nav aria-label="Main navigation">
-    <a class="nav-logo" href="/">Helena Lee</a>
-    <ul class="nav-links">
-      <li><a href="/#work">Work</a></li>
-      <li><a href="/#about">About</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-    <a class="nav-back" href="/social-brand.html">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-        <path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
-          stroke-linejoin="round" />
-      </svg>
-      Social &amp; Brand
-    </a>
-  </nav>
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/">Helena Lee</a>
+  <ul class="nav-links">
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a class="nav-back" href="/social-brand.html">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Social &amp; Brand
+  </a>
+</nav>
 
-  <!-- PAGE -->
-  <main class="page" role="main">
+<!-- PAGE -->
+<main class="page" role="main">
 
-    <!-- HEADER -->
-    <header class="case-header" aria-label="Case study header">
-      <div class="blob" style="width:280px;height:280px;background:var(--warm);top:-120px;right:-60px;opacity:.22"
-        aria-hidden="true"></div>
-      <div class="blob" style="width:200px;height:200px;background:var(--deep);bottom:-80px;left:-30px;opacity:.2"
-        aria-hidden="true"></div>
-      <p class="ch-breadcrumb">Portfolio &mdash; Social Media &amp; Brand</p>
-      <p class="ch-company">Ricoh Canada &nbsp;&middot;&nbsp; Marketing Specialist Intern</p>
-      <h1 class="ch-title">Activating an <em>untapped channel</em> &mdash;<br>Ricoh's employee advocacy program</h1>
-      <p class="ch-tagline">Built Ricoh Canada's employee advocacy program from scratch on GaggleAMP &mdash; designing
-        the content system, onboarding flow, and platform architecture that took the channel from dormant to driving a
-        1.5&times; lift in LinkedIn presence across 70+ employees within two months of launch.</p>
-      <div class="ch-pills" role="list" aria-label="Project tags">
-        <span class="pill pill-blue" role="listitem">Social Media Strategy</span>
-        <span class="pill pill-blue" role="listitem">Sales Enablement</span>
-        <span class="pill pill-blue" role="listitem">Platform Architecture</span>
-        <span class="pill pill-warm" role="listitem">Internship</span>
-        <span class="pill pill-cream" role="listitem">Cross-functional</span>
-        <span class="pill pill-cream" role="listitem">GaggleAMP</span>
-      </div>
-    </header>
+  <!-- HEADER -->
+  <header class="case-header" aria-label="Case study header">
+    <div class="blob" style="width:280px;height:280px;background:var(--warm);top:-120px;right:-60px;opacity:.22" aria-hidden="true"></div>
+    <div class="blob" style="width:200px;height:200px;background:var(--deep);bottom:-80px;left:-30px;opacity:.2" aria-hidden="true"></div>
+    <p class="ch-breadcrumb">Portfolio &mdash; Social Media &amp; Brand</p>
+    <p class="ch-company">Ricoh Canada &nbsp;&middot;&nbsp; Marketing Specialist Intern</p>
+    <h1 class="ch-title">Activating an <em>untapped channel</em> &mdash;<br>Ricoh's employee advocacy program</h1>
+    <p class="ch-tagline">Built Ricoh Canada's employee advocacy program from scratch on GaggleAMP &mdash; designing the content system, onboarding flow, and platform architecture that took the channel from dormant to driving a 1.5&times; lift in LinkedIn presence across 70+ employees within two months of launch.</p>
+    <div class="ch-pills" role="list" aria-label="Project tags">
+      <span class="pill pill-blue" role="listitem">Social Media Strategy</span>
+      <span class="pill pill-blue" role="listitem">Sales Enablement</span>
+      <span class="pill pill-blue" role="listitem">Platform Architecture</span>
+      <span class="pill pill-warm" role="listitem">Internship</span>
+      <span class="pill pill-cream" role="listitem">Cross-functional</span>
+      <span class="pill pill-cream" role="listitem">GaggleAMP</span>
+    </div>
+  </header>
 
-    <!-- STATS -->
-    <section class="stats-row" aria-label="Key metrics">
-      <div class="stat">
-        <div class="stat-num" aria-label="1.5 times">1.5&times;</div>
-        <div class="stat-label">LinkedIn presence lift in 2 months</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">70+</div>
-        <div class="stat-label">Employees onboarded nationally</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">0&rarr;1</div>
-        <div class="stat-label">Platform built from scratch</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Teams connected via shared workflow</div>
-      </div>
-    </section>
+  <!-- STATS -->
+  <section class="stats-row" aria-label="Key metrics">
+    <div class="stat">
+      <div class="stat-num" aria-label="1.5 times">1.5&times;</div>
+      <div class="stat-label">LinkedIn presence lift in 2 months</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">70+</div>
+      <div class="stat-label">Employees onboarded nationally</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0&rarr;1</div>
+      <div class="stat-label">Platform built from scratch</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Teams connected via shared workflow</div>
+    </div>
+  </section>
 
-    <!-- MAIN GRID -->
-    <div class="case-grid">
-      <div>
+  <!-- MAIN GRID -->
+  <div class="case-grid">
+  <div>
 
-        <!-- 01 THE PROBLEM -->
-        <article class="sec" aria-labelledby="s1">
-          <div class="sec-head">
-            <span class="sec-num" aria-hidden="true">01</span>
-            <h2 class="sec-title" id="s1">The problem</h2>
-            <span class="sec-badge">Context</span>
+    <!-- 01 THE PROBLEM -->
+    <article class="sec" aria-labelledby="s1">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">01</span>
+        <h2 class="sec-title" id="s1">The problem</h2>
+        <span class="sec-badge">Context</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">Ricoh Canada had already invested in GaggleAMP &mdash; an employee advocacy platform designed to help sales teams extend the company's reach on LinkedIn through their personal networks. The problem was that nobody was really using it. There was <strong>no content system, no onboarding process</strong>, and no clear way for account executives or product marketing managers to know what to share or when. The platform existed, the licence was paid for, and it was completely dormant.</p>
+
+        <div class="evl">Before and after</div>
+        <div class="ba-grid" role="list" aria-label="Before and after comparison">
+          <div class="ba-card ba-before" role="listitem">
+            <div class="ba-label">Before</div>
+            <div class="ba-item"><span aria-hidden="true">&#10007;</span>No content system or calendar</div>
+            <div class="ba-item"><span aria-hidden="true">&#10007;</span>No onboarding for new users</div>
+            <div class="ba-item"><span aria-hidden="true">&#10007;</span>Platform architecture disorganized</div>
+            <div class="ba-item"><span aria-hidden="true">&#10007;</span>AEs unsure what to share or when</div>
+            <div class="ba-item"><span aria-hidden="true">&#10007;</span>Near-zero internal adoption</div>
           </div>
-          <div class="sec-body">
-            <p class="body">Ricoh Canada had already invested in GaggleAMP &mdash; an employee advocacy platform
-              designed to help sales teams extend the company's reach on LinkedIn through their personal networks. The
-              problem was that nobody was really using it. There was <strong>no content system, no onboarding
-                process</strong>, and no clear way for account executives or product marketing managers to know what to
-              share or when. The platform existed, the licence was paid for, and it was completely dormant.</p>
+          <div class="ba-card ba-after" role="listitem">
+            <div class="ba-label">After</div>
+            <div class="ba-item"><span aria-hidden="true">&#10003;</span>Shared cross-functional content calendar</div>
+            <div class="ba-item"><span aria-hidden="true">&#10003;</span>Self-serve onboarding with video tutorials</div>
+            <div class="ba-item"><span aria-hidden="true">&#10003;</span>Department-specific content feeds</div>
+            <div class="ba-item"><span aria-hidden="true">&#10003;</span>AEs sharing relevant, sector-specific posts</div>
+            <div class="ba-item"><span aria-hidden="true">&#10003;</span>70+ employees actively using the platform</div>
+          </div>
+        </div>
+      </div>
+    </article>
 
-            <div class="evl">Before and after</div>
-            <div class="ba-grid" role="list" aria-label="Before and after comparison">
-              <div class="ba-card ba-before" role="listitem">
-                <div class="ba-label">Before</div>
-                <div class="ba-item"><span aria-hidden="true">&#10007;</span>No content system or calendar</div>
-                <div class="ba-item"><span aria-hidden="true">&#10007;</span>No onboarding for new users</div>
-                <div class="ba-item"><span aria-hidden="true">&#10007;</span>Platform architecture disorganized</div>
-                <div class="ba-item"><span aria-hidden="true">&#10007;</span>AEs unsure what to share or when</div>
-                <div class="ba-item"><span aria-hidden="true">&#10007;</span>Near-zero internal adoption</div>
-              </div>
-              <div class="ba-card ba-after" role="listitem">
-                <div class="ba-label">After</div>
-                <div class="ba-item"><span aria-hidden="true">&#10003;</span>Shared cross-functional content calendar
-                </div>
-                <div class="ba-item"><span aria-hidden="true">&#10003;</span>Self-serve onboarding with video tutorials
-                </div>
-                <div class="ba-item"><span aria-hidden="true">&#10003;</span>Department-specific content feeds</div>
-                <div class="ba-item"><span aria-hidden="true">&#10003;</span>AEs sharing relevant, sector-specific posts
-                </div>
-                <div class="ba-item"><span aria-hidden="true">&#10003;</span>70+ employees actively using the platform
-                </div>
-              </div>
+    <!-- 02 AUDIENCE -->
+    <article class="sec" aria-labelledby="s2">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">02</span>
+        <h2 class="sec-title" id="s2">Understanding the audience</h2>
+        <span class="sec-badge">Insight</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">This project had two distinct internal audiences with completely different needs &mdash; and getting the platform right meant understanding both of them separately.</p>
+        <p class="body"><strong>Account executives</strong> needed content that was immediately relevant to their specific clients and sectors. If a post had nothing to do with their book of business, they would scroll past it and never come back. The platform had to make relevance effortless.</p>
+        <p class="body"><strong>Product marketing managers</strong> needed a structured way to funnel approved, on-brand content into the platform without creating extra work. They were the supply side &mdash; and if the workflow was too complex, content would dry up fast regardless of how good the architecture was.</p>
+        <div class="hl"><strong>The core insight:</strong> Marketing serves sales best when it anticipates their context. AEs don't have time to find content. Relevance delivered at the right moment is what turns a passive tool into a daily habit.</div>
+      </div>
+    </article>
+
+    <!-- 03 WHAT I BUILT -->
+    <article class="sec" aria-labelledby="s3">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <h2 class="sec-title" id="s3">What I built and owned</h2>
+        <span class="sec-badge">My contribution</span>
+      </div>
+      <div class="sec-body">
+
+        <div class="evl">Content workflow I designed</div>
+        <div class="workflow" aria-label="Content workflow diagram: Marketing to shared calendar to GaggleAMP feeds to AE shares to LinkedIn reach">
+          <div class="wf-node"><div class="wf-node-title">Marketing</div><div class="wf-node-sub">Content source</div></div>
+          <div class="wf-arrow" aria-hidden="true">&#8594;</div>
+          <div class="wf-node wf-node-hl"><div class="wf-node-title">Shared calendar</div><div class="wf-node-sub">Cross-functional</div></div>
+          <div class="wf-arrow" aria-hidden="true">&#8594;</div>
+          <div class="wf-node wf-node-hl"><div class="wf-node-title">GaggleAMP feeds</div><div class="wf-node-sub">By department</div></div>
+          <div class="wf-arrow" aria-hidden="true">&#8594;</div>
+          <div class="wf-node"><div class="wf-node-title">AE shares</div><div class="wf-node-sub">On LinkedIn</div></div>
+          <div class="wf-arrow" aria-hidden="true">&#8594;</div>
+          <div class="wf-node wf-node-result"><div class="wf-node-title">LinkedIn reach</div><div class="wf-node-sub">1.5&times; lift</div></div>
+        </div>
+
+        <div class="steps" role="list" aria-label="Work completed">
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">A</div>
+            <div>
+              <div class="step-title">Cross-functional content workflow</div>
+              <div class="step-body">Designed a shared content calendar that connected marketing, sales, and creative teams &mdash; replacing an ad hoc process with a predictable, structured pipeline. This was the foundation everything else depended on.</div>
             </div>
           </div>
-        </article>
-
-        <!-- 02 AUDIENCE -->
-        <article class="sec" aria-labelledby="s2">
-          <div class="sec-head">
-            <span class="sec-num" aria-hidden="true">02</span>
-            <h2 class="sec-title" id="s2">Understanding the audience</h2>
-            <span class="sec-badge">Insight</span>
-          </div>
-          <div class="sec-body">
-            <p class="body">This project had two distinct internal audiences with completely different needs &mdash; and
-              getting the platform right meant understanding both of them separately.</p>
-            <p class="body"><strong>Account executives</strong> needed content that was immediately relevant to their
-              specific clients and sectors. If a post had nothing to do with their book of business, they would scroll
-              past it and never come back. The platform had to make relevance effortless.</p>
-            <p class="body"><strong>Product marketing managers</strong> needed a structured way to funnel approved,
-              on-brand content into the platform without creating extra work. They were the supply side &mdash; and if
-              the workflow was too complex, content would dry up fast regardless of how good the architecture was.</p>
-            <div class="hl"><strong>The core insight:</strong> Marketing serves sales best when it anticipates their
-              context. AEs don't have time to find content. Relevance delivered at the right moment is what turns a
-              passive tool into a daily habit.</div>
-          </div>
-        </article>
-
-        <!-- 03 WHAT I BUILT -->
-        <article class="sec" aria-labelledby="s3">
-          <div class="sec-head">
-            <span class="sec-num" aria-hidden="true">03</span>
-            <h2 class="sec-title" id="s3">What I built and owned</h2>
-            <span class="sec-badge">My contribution</span>
-          </div>
-          <div class="sec-body">
-
-            <div class="evl">Content workflow I designed</div>
-            <div class="workflow"
-              aria-label="Content workflow diagram: Marketing to shared calendar to GaggleAMP feeds to AE shares to LinkedIn reach">
-              <div class="wf-node">
-                <div class="wf-node-title">Marketing</div>
-                <div class="wf-node-sub">Content source</div>
-              </div>
-              <div class="wf-arrow" aria-hidden="true">&#8594;</div>
-              <div class="wf-node wf-node-hl">
-                <div class="wf-node-title">Shared calendar</div>
-                <div class="wf-node-sub">Cross-functional</div>
-              </div>
-              <div class="wf-arrow" aria-hidden="true">&#8594;</div>
-              <div class="wf-node wf-node-hl">
-                <div class="wf-node-title">GaggleAMP feeds</div>
-                <div class="wf-node-sub">By department</div>
-              </div>
-              <div class="wf-arrow" aria-hidden="true">&#8594;</div>
-              <div class="wf-node">
-                <div class="wf-node-title">AE shares</div>
-                <div class="wf-node-sub">On LinkedIn</div>
-              </div>
-              <div class="wf-arrow" aria-hidden="true">&#8594;</div>
-              <div class="wf-node wf-node-result">
-                <div class="wf-node-title">LinkedIn reach</div>
-                <div class="wf-node-sub">1.5&times; lift</div>
-              </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">B</div>
+            <div>
+              <div class="step-title">GaggleAMP platform rebuild</div>
+              <div class="step-body">Rebuilt the platform architecture entirely, organizing content into department-specific feeds so account executives could find posts relevant to their specific clients and sectors &mdash; rather than scrolling through content with no connection to their book of business.</div>
             </div>
-
-            <div class="steps" role="list" aria-label="Work completed">
-              <div class="step" role="listitem">
-                <div class="step-dot" aria-hidden="true">A</div>
-                <div>
-                  <div class="step-title">Cross-functional content workflow</div>
-                  <div class="step-body">Designed a shared content calendar that connected marketing, sales, and
-                    creative teams &mdash; replacing an ad hoc process with a predictable, structured pipeline. This was
-                    the foundation everything else depended on.</div>
-                </div>
-              </div>
-              <div class="step" role="listitem">
-                <div class="step-dot" aria-hidden="true">B</div>
-                <div>
-                  <div class="step-title">GaggleAMP platform rebuild</div>
-                  <div class="step-body">Rebuilt the platform architecture entirely, organizing content into
-                    department-specific feeds so account executives could find posts relevant to their specific clients
-                    and sectors &mdash; rather than scrolling through content with no connection to their book of
-                    business.</div>
-                </div>
-              </div>
-              <div class="step" role="listitem">
-                <div class="step-dot" aria-hidden="true">C</div>
-                <div>
-                  <div class="step-title">Self-serve onboarding program</div>
-                  <div class="step-body">Developed the full onboarding program independently &mdash; including
-                    step-by-step video tutorials and an FAQ guide &mdash; so employees could get up and running without
-                    needing hand-holding from the marketing team. Without meaningful adoption, the best content system
-                    in the world would have stayed dormant.</div>
-                </div>
-              </div>
-              <div class="step" role="listitem">
-                <div class="step-dot" aria-hidden="true">D</div>
-                <div>
-                  <div class="step-title">National rollout across 70+ employees</div>
-                  <div class="step-body">Managed the rollout across the Canadian sales and marketing organization,
-                    reaching 70+ account executives and PMMs. Feedback from both audiences was largely positive, with a
-                    significant portion of the sales team using the platform as part of their ongoing social selling
-                    process.</div>
-                </div>
-              </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">C</div>
+            <div>
+              <div class="step-title">Self-serve onboarding program</div>
+              <div class="step-body">Developed the full onboarding program independently &mdash; including step-by-step video tutorials and an FAQ guide &mdash; so employees could get up and running without needing hand-holding from the marketing team. Without meaningful adoption, the best content system in the world would have stayed dormant.</div>
             </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">D</div>
+            <div>
+              <div class="step-title">National rollout across 70+ employees</div>
+              <div class="step-body">Managed the rollout across the Canadian sales and marketing organization, reaching 70+ account executives and PMMs. Feedback from both audiences was largely positive, with a significant portion of the sales team using the platform as part of their ongoing social selling process.</div>
+            </div>
+          </div>
+        </div>
 
-            <!-- HOW TO ADD YOUR PHOTO:
+        <!-- HOW TO ADD YOUR PHOTO:
              1. Save your image in the same folder as this HTML file
              2. Delete the .viz-slot div below
              3. Replace with:
@@ -941,154 +386,132 @@
                   <p style="font-size:10px;color:var(--muted);padding:8px 14px;border-top:.5px solid var(--border);background:var(--offwhite)">Your caption here</p>
                 </div>
         -->
-            <div class="viz-slot" aria-label="Image placeholder">
-              <div class="vz-title">&#128248; Insert: GaggleAMP feed structure or onboarding video frame</div>
-              <div class="vz-sub">Replace this block with an &lt;img&gt; tag pointing to your screenshot file</div>
-            </div>
-          </div>
-        </article>
+        <div class="viz-slot" aria-label="Image placeholder">
+          <div class="vz-title">&#128248; Insert: GaggleAMP feed structure or onboarding video frame</div>
+          <div class="vz-sub">Replace this block with an &lt;img&gt; tag pointing to your screenshot file</div>
+        </div>
+      </div>
+    </article>
 
-        <!-- 04 RESULTS -->
-        <article class="sec" aria-labelledby="s4">
-          <div class="sec-head">
-            <span class="sec-num" aria-hidden="true">04</span>
-            <h2 class="sec-title" id="s4">Results</h2>
-            <span class="sec-badge">Impact</span>
+    <!-- 04 RESULTS -->
+    <article class="sec" aria-labelledby="s4">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">04</span>
+        <h2 class="sec-title" id="s4">Results</h2>
+        <span class="sec-badge">Impact</span>
+      </div>
+      <div class="sec-body">
+        <div class="impact-grid" role="list" aria-label="Key results">
+          <div class="impact-block" role="listitem">
+            <div class="ib-num" aria-label="1.5 times">1.5&times;</div>
+            <div class="ib-label">Increase in Ricoh Canada's LinkedIn presence within two months of launch</div>
           </div>
-          <div class="sec-body">
-            <div class="impact-grid" role="list" aria-label="Key results">
-              <div class="impact-block" role="listitem">
-                <div class="ib-num" aria-label="1.5 times">1.5&times;</div>
-                <div class="ib-label">Increase in Ricoh Canada's LinkedIn presence within two months of launch</div>
-              </div>
-              <div class="impact-block" role="listitem">
-                <div class="ib-num">70+</div>
-                <div class="ib-label">Sales reps and PMMs onboarded onto a channel with previously near-zero adoption
-                </div>
-              </div>
-              <div class="impact-block" role="listitem">
-                <div class="ib-num">0&rarr;1</div>
-                <div class="ib-label">Full platform built from scratch &mdash; content system, architecture, and
-                  onboarding all new</div>
-              </div>
-              <div class="impact-block" role="listitem">
-                <div class="ib-num">Active</div>
-                <div class="ib-label">Significant portion of sales team using the platform as part of their ongoing
-                  social selling</div>
-              </div>
-            </div>
-            <div class="hl" style="margin-top:14px"><strong>What made it work:</strong> The 1.5&times; result came from
-              removing the friction between great content and the people meant to share it. Architecture, onboarding,
-              and workflow had to work together before the numbers could move. Each one was a dependency for the next.
-            </div>
+          <div class="impact-block" role="listitem">
+            <div class="ib-num">70+</div>
+            <div class="ib-label">Sales reps and PMMs onboarded onto a channel with previously near-zero adoption</div>
           </div>
-        </article>
+          <div class="impact-block" role="listitem">
+            <div class="ib-num">0&rarr;1</div>
+            <div class="ib-label">Full platform built from scratch &mdash; content system, architecture, and onboarding all new</div>
+          </div>
+          <div class="impact-block" role="listitem">
+            <div class="ib-num">Active</div>
+            <div class="ib-label">Significant portion of sales team using the platform as part of their ongoing social selling</div>
+          </div>
+        </div>
+        <div class="hl" style="margin-top:14px"><strong>What made it work:</strong> The 1.5&times; result came from removing the friction between great content and the people meant to share it. Architecture, onboarding, and workflow had to work together before the numbers could move. Each one was a dependency for the next.</div>
+      </div>
+    </article>
 
-        <!-- 05 LEARNINGS -->
-        <article class="sec" aria-labelledby="s5">
-          <div class="sec-head">
-            <span class="sec-num" aria-hidden="true">05</span>
-            <h2 class="sec-title" id="s5">What I learned</h2>
-            <span class="sec-badge">Reflection</span>
-          </div>
-          <div class="sec-body">
-            <div class="steps" role="list" aria-label="Key learnings">
-              <div class="step" role="listitem">
-                <div class="step-dot" aria-hidden="true">1</div>
-                <div>
-                  <div class="step-title">Adoption is a design problem, not a communication problem</div>
-                  <div class="step-body">The platform had been available for months before I arrived. Sending a Slack
-                    message telling people to use it would not have fixed anything. What fixed it was removing the
-                    reasons not to &mdash; unclear feeds, no onboarding, irrelevant content. Frictionless beats
-                    compelling every time.</div>
-                </div>
-              </div>
-              <div class="step" role="listitem">
-                <div class="step-dot" aria-hidden="true">2</div>
-                <div>
-                  <div class="step-title">Marketing serves sales best when it anticipates their context</div>
-                  <div class="step-body">The department-specific feed architecture was the most important structural
-                    decision I made. Relevance delivered at the right moment is what turns a passive tool into a daily
-                    habit. That principle applies well beyond advocacy platforms.</div>
-                </div>
-              </div>
-              <div class="step" role="listitem">
-                <div class="step-dot" aria-hidden="true">3</div>
-                <div>
-                  <div class="step-title">Building from zero teaches you what infrastructure actually means</div>
-                  <div class="step-body">Having full ownership of a 0-to-1 build &mdash; no existing system to inherit,
-                    no playbook to follow &mdash; taught me how to sequence decisions. You cannot train people on a
-                    platform that is not organized. You cannot fill an organized platform without a content workflow.
-                    Order matters.</div>
-                </div>
-              </div>
+    <!-- 05 LEARNINGS -->
+    <article class="sec" aria-labelledby="s5">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">05</span>
+        <h2 class="sec-title" id="s5">What I learned</h2>
+        <span class="sec-badge">Reflection</span>
+      </div>
+      <div class="sec-body">
+        <div class="steps" role="list" aria-label="Key learnings">
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">1</div>
+            <div>
+              <div class="step-title">Adoption is a design problem, not a communication problem</div>
+              <div class="step-body">The platform had been available for months before I arrived. Sending a Slack message telling people to use it would not have fixed anything. What fixed it was removing the reasons not to &mdash; unclear feeds, no onboarding, irrelevant content. Frictionless beats compelling every time.</div>
             </div>
           </div>
-        </article>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">2</div>
+            <div>
+              <div class="step-title">Marketing serves sales best when it anticipates their context</div>
+              <div class="step-body">The department-specific feed architecture was the most important structural decision I made. Relevance delivered at the right moment is what turns a passive tool into a daily habit. That principle applies well beyond advocacy platforms.</div>
+            </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">3</div>
+            <div>
+              <div class="step-title">Building from zero teaches you what infrastructure actually means</div>
+              <div class="step-body">Having full ownership of a 0-to-1 build &mdash; no existing system to inherit, no playbook to follow &mdash; taught me how to sequence decisions. You cannot train people on a platform that is not organized. You cannot fill an organized platform without a content workflow. Order matters.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
 
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside aria-label="Project details">
+    <div class="sidebar">
+
+      <div class="scard">
+        <div class="sc-head">Project details</div>
+        <div class="sc-body">
+          <div class="sc-row"><span class="sc-key">Company</span><span class="sc-val">Ricoh Canada</span></div>
+          <div class="sc-row"><span class="sc-key">Role</span><span class="sc-val">Marketing Specialist Intern</span></div>
+          <div class="sc-row"><span class="sc-key">Pillar</span><span class="sc-val">Social Media &amp; Brand</span></div>
+          <div class="sc-row"><span class="sc-key">Scope</span><span class="sc-val">National (Canada)</span></div>
+          <div class="sc-row"><span class="sc-key">Platform</span><span class="sc-val">GaggleAMP + LinkedIn</span></div>
+          <div class="sc-row"><span class="sc-key">Team</span><span class="sc-val">Cross-functional</span></div>
+        </div>
       </div>
 
-      <!-- SIDEBAR -->
-      <aside aria-label="Project details">
-        <div class="sidebar">
-
-          <div class="scard">
-            <div class="sc-head">Project details</div>
-            <div class="sc-body">
-              <div class="sc-row"><span class="sc-key">Company</span><span class="sc-val">Ricoh Canada</span></div>
-              <div class="sc-row"><span class="sc-key">Role</span><span class="sc-val">Marketing Specialist
-                  Intern</span></div>
-              <div class="sc-row"><span class="sc-key">Pillar</span><span class="sc-val">Social Media &amp; Brand</span>
-              </div>
-              <div class="sc-row"><span class="sc-key">Scope</span><span class="sc-val">National (Canada)</span></div>
-              <div class="sc-row"><span class="sc-key">Platform</span><span class="sc-val">GaggleAMP + LinkedIn</span>
-              </div>
-              <div class="sc-row"><span class="sc-key">Team</span><span class="sc-val">Cross-functional</span></div>
-            </div>
-          </div>
-
-          <div class="scard">
-            <div class="sc-head">Skills demonstrated</div>
-            <div class="skill-wrap" role="list" aria-label="Skills">
-              <span class="skill" role="listitem">Employee advocacy</span>
-              <span class="skill" role="listitem">Platform architecture</span>
-              <span class="skill" role="listitem">Content strategy</span>
-              <span class="skill" role="listitem">Sales enablement</span>
-              <span class="skill" role="listitem">Onboarding design</span>
-              <span class="skill" role="listitem">Cross-functional workflow</span>
-              <span class="skill" role="listitem">Social selling</span>
-              <span class="skill" role="listitem">GaggleAMP</span>
-              <span class="skill" role="listitem">LinkedIn strategy</span>
-              <span class="skill" role="listitem">Change management</span>
-            </div>
-          </div>
-
-          <div class="scard">
-            <div class="sc-head">Visuals to add</div>
-            <div class="vis-list" role="list">
-              <div class="vis-item" role="listitem"><span
-                  style="color:var(--warm);flex-shrink:0">&#10022;</span>GaggleAMP feed structure screenshot</div>
-              <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>Frame
-                from your onboarding video</div>
-              <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>Content
-                calendar template (blurred)</div>
-              <div class="vis-item" role="listitem"><span
-                  style="color:var(--warm);flex-shrink:0">&#10022;</span>LinkedIn before/after reach numbers</div>
-            </div>
-            <div class="vis-note">Blur employee names and any proprietary Ricoh content before publishing.</div>
-          </div>
-
+      <div class="scard">
+        <div class="sc-head">Skills demonstrated</div>
+        <div class="skill-wrap" role="list" aria-label="Skills">
+          <span class="skill" role="listitem">Employee advocacy</span>
+          <span class="skill" role="listitem">Platform architecture</span>
+          <span class="skill" role="listitem">Content strategy</span>
+          <span class="skill" role="listitem">Sales enablement</span>
+          <span class="skill" role="listitem">Onboarding design</span>
+          <span class="skill" role="listitem">Cross-functional workflow</span>
+          <span class="skill" role="listitem">Social selling</span>
+          <span class="skill" role="listitem">GaggleAMP</span>
+          <span class="skill" role="listitem">LinkedIn strategy</span>
+          <span class="skill" role="listitem">Change management</span>
         </div>
-      </aside>
+      </div>
+
+      <div class="scard">
+        <div class="sc-head">Visuals to add</div>
+        <div class="vis-list" role="list">
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>GaggleAMP feed structure screenshot</div>
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>Frame from your onboarding video</div>
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>Content calendar template (blurred)</div>
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>LinkedIn before/after reach numbers</div>
+        </div>
+        <div class="vis-note">Blur employee names and any proprietary Ricoh content before publishing.</div>
+      </div>
+
     </div>
+  </aside>
+  </div>
 
-    <!-- FOOTER NAV -->
-    <nav class="footer-nav" aria-label="Case study navigation">
-      <a class="fn-btn fn-back" href="/social-brand.html">&#8592; Social &amp; Brand</a>
-      <a class="fn-btn fn-next" href="/tedxuw.html">Next: TEDxUW &#8594;</a>
-    </nav>
+  <!-- FOOTER NAV -->
+  <nav class="footer-nav" aria-label="Case study navigation">
+    <a class="fn-btn fn-back" href="/social-brand.html">&#8592; Social &amp; Brand</a>
+    <a class="fn-btn fn-next" href="/tedxuw.html">Next: TEDxUW &#8594;</a>
+  </nav>
 
-  </main>
+</main>
 </body>
-
 </html>
