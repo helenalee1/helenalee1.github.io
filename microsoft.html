@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Microsoft — Helena Lee Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',sans-serif;background:#F4F1ED;color:#1C2B3A;-webkit-font-smoothing:antialiased}
+
+:root{
+  --sky:#C8DCF0;--steel:#7AADD4;--deep:#4A7FA5;
+  --cream:#E8E0D0;--warm:#C9956A;--dark:#1C2B3A;--muted:#6B7F8E;
+  --offwhite:#F4F1ED;--white:#fff;--border:#e2ddd6;
+  --text:#4A5568;
+}
+
+/* ── NAV ── */
+nav {
+  background:rgba(244,241,237,.92);backdrop-filter:blur(12px);
+  border-bottom:.5px solid var(--border);
+  padding:0 5%;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:18px;color:var(--dark);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--dark)}
+.nav-back{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.04em;display:flex;align-items:center;gap:6px;transition:color .15s}
+.nav-back:hover{color:var(--dark)}
+
+/* ── PAGE WRAPPER ── */
+.page{max-width:960px;margin:0 auto;padding:80px 24px 80px}
+
+/* ── CASE HEADER ── */
+.case-header{
+  background:var(--dark);border-radius:16px;
+  padding:36px 36px 32px;margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+.ch-breadcrumb{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;position:relative;z-index:2}
+.ch-company{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px;position:relative;z-index:2}
+.ch-title{font-family:'Instrument Serif',serif;font-size:clamp(24px,4vw,36px);color:#fff;line-height:1.18;margin-bottom:10px;position:relative;z-index:2}
+.ch-title em{font-style:italic;color:var(--sky)}
+.ch-tagline{font-size:13px;color:rgba(255,255,255,.48);line-height:1.7;max-width:540px;position:relative;z-index:2;margin-bottom:20px;font-weight:300}
+.ch-pills{display:flex;gap:7px;flex-wrap:wrap;position:relative;z-index:2}
+.pill{font-size:9px;padding:4px 12px;border-radius:20px;border:1px solid;letter-spacing:.06em}
+.pill-blue{background:rgba(200,220,240,.11);border-color:rgba(200,220,240,.28);color:var(--sky)}
+.pill-warm{background:rgba(201,149,106,.11);border-color:rgba(201,149,106,.32);color:#e8b88a}
+.pill-cream{background:rgba(232,224,208,.09);border-color:rgba(232,224,208,.22);color:#d0c8b5}
+
+/* ── STATS ── */
+.stats-row{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px;
+}
+.stat{
+  background:var(--white);border:.5px solid var(--border);
+  border-radius:12px;padding:16px 14px;text-align:center;
+}
+.stat-num{font-family:'Instrument Serif',serif;font-size:28px;color:var(--deep);line-height:1;margin-bottom:6px}
+.stat-label{font-size:9px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;line-height:1.5}
+
+/* ── MAIN GRID ── */
+.case-grid{
+  display:grid;grid-template-columns:1fr 280px;gap:20px;
+}
+
+/* ── SECTION CARD ── */
+.sec{
+  border:.5px solid var(--border);border-radius:14px;
+  overflow:hidden;background:var(--white);margin-bottom:14px;
+}
+.sec:last-child{margin-bottom:0}
+.sec-head{
+  padding:14px 20px 12px;border-bottom:.5px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+}
+.sec-num{font-family:'Instrument Serif',serif;font-size:20px;color:var(--steel)}
+.sec-title{font-size:13px;font-weight:500;color:var(--dark)}
+.sec-badge{font-size:9px;color:var(--muted);margin-left:auto;letter-spacing:.08em;text-transform:uppercase}
+.sec-body{padding:18px 20px}
+
+p.body{font-size:12px;color:var(--text);line-height:1.78;margin-bottom:12px}
+p.body:last-child{margin-bottom:0}
+p.body strong{color:var(--dark);font-weight:500}
+
+.hl{
+  background:#f7f4f0;border-radius:8px;border-left:2.5px solid var(--steel);
+  padding:12px 16px;margin:12px 0;font-size:11.5px;color:var(--text);line-height:1.7;
+}
+.hl strong{color:var(--dark);font-weight:500}
+
+/* ── EVIDENCE LABEL ── */
+.evl{
+  font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:18px 0 12px;
+  display:flex;align-items:center;gap:8px;
+}
+.evl::after{content:'';flex:1;height:.5px;background:var(--border)}
+
+/* ── AUDIENCE TAGS ── */
+.seg-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.seg{
+  font-size:10px;padding:4px 11px;border-radius:4px;font-weight:500;
+}
+.seg-blue{background:var(--sky);color:var(--deep)}
+.seg-warm{background:#f3e8df;color:#8a5a36}
+.seg-dark{background:var(--offwhite);color:var(--dark);border:.5px solid var(--border)}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:14px;padding:12px 0;border-bottom:.5px solid var(--border);align-items:flex-start}
+.step:last-child{border:none;padding-bottom:0}
+.step-dot{
+  width:24px;height:24px;border-radius:50%;background:var(--sky);
+  display:flex;align-items:center;justify-content:center;
+  font-size:9px;color:var(--deep);font-weight:700;flex-shrink:0;margin-top:2px;
+}
+.step-title{font-size:12px;font-weight:500;color:var(--dark);margin-bottom:4px}
+.step-body{font-size:11.5px;color:var(--text);line-height:1.68}
+
+/* ── IMPACT GRID ── */
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.impact-block{background:var(--offwhite);border-radius:8px;padding:14px 16px}
+.ib-num{font-family:'Instrument Serif',serif;font-size:26px;color:var(--deep);margin-bottom:4px;line-height:1}
+.ib-label{font-size:10.5px;color:var(--text);line-height:1.5}
+
+/* ── VIZ SLOT ── */
+.viz-slot{
+  border:.5px dashed #c8bfb4;border-radius:8px;
+  padding:16px;background:#faf8f5;margin:14px 0;text-align:center;
+}
+.vz-title{font-size:10px;font-weight:500;color:var(--muted);margin-bottom:3px}
+.vz-sub{font-size:9px;color:#9a9288}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:12px}
+.scard{border:.5px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white)}
+.sc-head{padding:10px 16px;border-bottom:.5px solid var(--border);font-size:11.5px;font-weight:500;color:var(--dark)}
+.sc-body{padding:10px 16px}
+.sc-row{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:5px 0;border-bottom:.5px solid var(--border);gap:8px;
+}
+.sc-row:last-child{border:none}
+.sc-key{font-size:10px;color:var(--muted)}
+.sc-val{font-size:10px;font-weight:500;text-align:right;color:var(--dark)}
+.skill-wrap{display:flex;flex-wrap:wrap;gap:5px;padding:10px 16px}
+.skill{
+  font-size:9px;padding:3px 9px;border-radius:20px;
+  background:var(--offwhite);border:.5px solid var(--border);color:var(--dark);
+}
+.vis-list{padding:10px 16px}
+.vis-item{
+  font-size:10px;color:var(--text);padding:4px 0;
+  border-bottom:.5px solid var(--border);display:flex;gap:6px;line-height:1.5;
+}
+.vis-item:last-child{border:none}
+.vis-note{
+  font-size:9px;color:var(--muted);line-height:1.6;padding:8px 16px;
+  border-top:.5px solid var(--border);background:var(--offwhite);
+}
+
+/* ── FOOTER NAV ── */
+.footer-nav{
+  display:flex;gap:12px;margin-top:28px;
+}
+.fn-btn{
+  flex:1;padding:13px 0;border-radius:10px;font-size:12px;font-weight:500;
+  text-align:center;text-decoration:none;display:block;transition:background .15s;
+  font-family:'Bricolage Grotesque',sans-serif;
+}
+.fn-back{
+  border:.5px solid var(--border);color:var(--muted);background:var(--white);
+}
+.fn-back:hover{background:var(--offwhite)}
+.fn-next{background:var(--dark);color:#fff}
+.fn-next:hover{background:#2d3f54}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .stats-row{grid-template-columns:1fr 1fr}
+  .case-grid{grid-template-columns:1fr}
+  .impact-grid{grid-template-columns:1fr}
+  .ch-title{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="/">Helena Lee</a>
+  <ul class="nav-links">
+    <li><a href="/Users/helenalee/Downloads/Landing%20Page.html">Work</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a class="nav-back" href="/Users/helenalee/Downloads/Landing%20Page.html">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+</nav>
+
+<!-- PAGE -->
+<main class="page" role="main">
+
+  <!-- HEADER -->
+  <header class="case-header" aria-label="Case study header">
+    <div class="blob" style="width:300px;height:300px;background:var(--deep);top:-130px;right:-70px;opacity:.22" aria-hidden="true"></div>
+    <div class="blob" style="width:200px;height:200px;background:var(--warm);bottom:-80px;left:20px;opacity:.2" aria-hidden="true"></div>
+    <p class="ch-breadcrumb">Project Management &amp; Ownership</p>
+    <p class="ch-company">📍 Microsoft · Modern Work &amp; Security · 🌱 Product Marketing Intern</p>
+    <h1 class="ch-title">Driving <em>11&times; growth</em> for<br>Microsoft's Cloud Skills Challenge</h1>
+    <p class="ch-tagline">End-to-end ownership of go-to-market strategy, sales enablement, and program operations for Microsoft Canada's online certification platform, resulting in record-breaking sign-up and engagement growth.</p>
+    <div class="ch-pills" role="list" aria-label="Project tags">
+      <span class="pill pill-blue" role="listitem">Product Marketing</span>
+      <span class="pill pill-blue" role="listitem">Go-to-Market Strategy</span>
+      <span class="pill pill-blue" role="listitem">Sales Enablement</span>
+      <span class="pill pill-warm" role="listitem">Internship</span>
+      <span class="pill pill-cream" role="listitem">B2B &amp; Enterprise</span>
+      
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats-row" aria-label="Key metrics">
+    <div class="stat">
+      <div class="stat-num" aria-label="11 times">11&times;</div>
+      <div class="stat-label">Sign-up growth over 8 months</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Account executives engaged to</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Months end-to-end ownership</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1&times;</div>
+      <div class="stat-label">Record activation at Colloque Cybersecurity event</div>
+    </div>
+  </section>
+
+  <!-- MAIN GRID -->
+  <div class="case-grid">
+  <div>
+
+    <!-- 01 -->
+    <article class="sec" aria-labelledby="s1">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">01</span>
+        <h2 class="sec-title" id="s1">The challenge</h2>
+        <span class="sec-badge">Context</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">When I joined Microsoft Canada's Modern Work &amp; Security team, the Cloud Skills Challenge was an online certification platform helping professionals become Microsoft-certified that had launched with early success but needed a stronger growth engine behind it.</p>
+        <p class="body">The learning content was strong, but the program was not deeply embedded in the sales conversations happening every day across Microsoft's account teams. Entire audience segments, including a largely untapped education sector, had not been meaningfully reached.</p>
+        <div class="hl"><strong>My role:</strong> I was given end-to-end ownership across go-to-market strategy, content development, sales enablement, and day-to-day operations — with one goal: get more people in and keep them engaged.</div>
+        <div class="viz-slot" role="img" aria-label="Screenshot placeholder">
+          <div class="vz-title">Insert: Cloud Skills Challenge landing page screenshot</div>
+          <div class="vz-sub">Shows the program scope and role-based track structure to give context on what you were working on</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="sec" aria-labelledby="s2">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">02</span>
+        <h2 class="sec-title" id="s2">Starting with the people, not the product</h2>
+        <span class="sec-badge">Audience research</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">Before building anything, I spent time talking directly with SMC and enterprise account executives to understand how they were currently talking about skilling with their clients, what friction they ran into, and what they actually needed to make the Cloud Skills Challenge part of their conversations naturally.</p>
+        <p class="body">I studied historic strategies to understand what had worked before and where there was room to do something different. From this, I built a <strong>persona framework</strong> that mapped distinct audience segments to the certification pathways most relevant to them.</p>
+        <div class="evl">Audience segments mapped</div>
+        <div class="seg-row" role="list" aria-label="Audience segments">
+          <span class="seg seg-blue" role="listitem">Azure users</span>
+          <span class="seg seg-blue" role="listitem">Security professionals</span>
+          <span class="seg seg-blue" role="listitem">Modern workplace users</span>
+          <span class="seg seg-blue" role="listitem">Non-technical audiences</span>
+          <span class="seg seg-warm" role="listitem">Education sector</span>
+          <span class="seg seg-dark" role="listitem">SMC &amp; Enterprise AEs</span>
+        </div>
+        <div class="hl" style="margin-top:14px"><strong>Key insight:</strong> When participant data pointed to unmet demand for a Teams Administrator learning track, I worked with the PM team to get it added to the platform, turning an audience signal into a product decision.</div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="sec" aria-labelledby="s3">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <h2 class="sec-title" id="s3">What I built and owned</h2>
+        <span class="sec-badge">My contribution</span>
+      </div>
+      <div class="sec-body">
+        <div class="steps" role="list" aria-label="Work completed">
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">A</div>
+            <div>
+              <div class="step-title">Sales enablement suite</div>
+              <div class="step-body">I built a full suite of enablement materials such as presentations, one-pagers, email templates, social media copy direction and other digital assets, and secured time in all-hands meetings to put the program on senior AEs' radars. I made sure to listen and understand the majority of the pain points of the AE's and found ways to ease these gaps by creating and enhancing Cloud Skills Challenge assets for teams to use in their day-to-day client conversations nautrally. The SMC team became some of the program's strongest internal champions from that point forward.</div>
+            </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">B</div>
+            <div>
+              <div class="step-title">GTM strategy and persona framework</div>
+              <div class="step-body"> I mapped distinct customer personas across key segments: Azure users, security professionals, modern workplace users, and non-technical audiences. I connected each to the certification pathways most relevant to their role. Identified the education sector as a new, overlooked growth channel and developed an initiative for AEs to introduce the program in client conversations.</div>
+            </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">C</div>
+            <div>
+              <div class="step-title">Event activation — Colloque Cybersecurity Event</div>
+              <div class="step-body">Served as creative lead for the Cloud Skills Challenge's presence at Colloque Cybersecurity, developing all bilingual (EN/FR) materials from scratch and supporting the account executive on the ground. The activation drove a record number of sign-ups on the Information Protection Administrator pathway in a single event because the right materials, the right audience, and the right timing came together.</div>
+            </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">D</div>
+            <div>
+              <div class="step-title">Demand generation strategy presentation</div>
+              <div class="step-body">Closed the term by presenting the full demand generation strategy to 40+ account executives, where the approach was well received by GTM leadership.</div>
+            </div>
+          </div>
+        </div>
+        <div class="viz-slot" style="margin-top:16px" role="img" aria-label="Deliverable placeholder">
+          <div class="vz-title">Insert: One of your enablement assets (cropped or blurred if needed)</div>
+          <div class="vz-sub">A slide, one-pager, or event visual proves ownership more than any description</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="sec" aria-labelledby="s4">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">04</span>
+        <h2 class="sec-title" id="s4">Results</h2>
+        <span class="sec-badge">Impact</span>
+      </div>
+      <div class="sec-body">
+        <div class="impact-grid" role="list" aria-label="Key results">
+          <div class="impact-block" role="listitem">
+            <div class="ib-num" aria-label="11 times">11&times;</div>
+            <div class="ib-label">Sign-up growth over 8 months — the highest the platform had seen to date</div>
+          </div>
+          <div class="impact-block" role="listitem">
+            <div class="ib-num">Record</div>
+            <div class="ib-label">Single-event sign-ups on the Info Protection Admin pathway at Colloque Cybersecurity</div>
+          </div>
+          <div class="impact-block" role="listitem">
+            <div class="ib-num">40+</div>
+            <div class="ib-label">Account executives aligned to the demand generation strategy, well received by GTM leadership</div>
+          </div>
+          <div class="impact-block" role="listitem">
+            <div class="ib-num">New</div>
+            <div class="ib-label">Education sector channel opened — a growth lane the program had not previously pursued</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 -->
+    <article class="sec" aria-labelledby="s5">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">05</span>
+        <h2 class="sec-title" id="s5">What I learned</h2>
+        <span class="sec-badge">Reflection</span>
+      </div>
+      <div class="sec-body">
+        <div class="steps" role="list" aria-label="Key learnings">
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">1</div>
+            <div>
+              <div class="step-title">Sales and marketing are the same conversation</div>
+              <div class="step-body">The biggest unlock was not a campaign. It was getting into the rooms where AEs were already talking to clients and making the program easy for them to introduce. Marketing that enables and suppports sales to carry the message travels further than any campaign built independently.</div>
+            </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">2</div>
+            <div>
+              <div class="step-title">Start with friction, not features</div>
+              <div class="step-body">Talking directly to account executives before building anything revealed that the program's gap was not awareness, it was embeddedness in sales conversations. That insight shaped everything else. I learned to diagnose before prescribing.</div>
+            </div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot" aria-hidden="true">3</div>
+            <div>
+              <div class="step-title">Audience data is a product brief</div>
+              <div class="step-body">When participant data showed demand for a Teams Administrator track that did not exist yet, I worked with the PM team to get it built. Marketing insights do not have to stop at campaigns, they can shape the product itself.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside aria-label="Project details">
+    <div class="sidebar">
+
+      <div class="scard">
+        <div class="sc-head">Project details</div>
+        <div class="sc-body">
+          <div class="sc-row"><span class="sc-key">Company</span><span class="sc-val">Microsoft Canada</span></div>
+          <div class="sc-row"><span class="sc-key">Team</span><span class="sc-val">Modern Work &amp; Security</span></div>
+          <div class="sc-row"><span class="sc-key">Role</span><span class="sc-val">PMM Intern</span></div>
+          <div class="sc-row"><span class="sc-key">Duration</span><span class="sc-val">8 months</span></div>
+          <div class="sc-row"><span class="sc-key">Audience</span><span class="sc-val">Enterprise &amp; SMC, EN/FR</span></div>
+          <div class="sc-row"><span class="sc-key">Channels</span><span class="sc-val">Events, Sales, Digital</span></div>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="sc-head">Skills demonstrated</div>
+        <div class="skill-wrap" role="list" aria-label="Skills">
+          <span class="skill" role="listitem">Go-to-market strategy</span>
+          <span class="skill" role="listitem">Sales enablement</span>
+          <span class="skill" role="listitem">Persona development</span>
+          <span class="skill" role="listitem">Event marketing</span>
+          <span class="skill" role="listitem">Bilingual content</span>
+          <span class="skill" role="listitem">Stakeholder alignment</span>
+          <span class="skill" role="listitem">Demand generation</span>
+          <span class="skill" role="listitem">Product marketing</span>
+          <span class="skill" role="listitem">Executive presentation</span>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="sc-head">Visuals to add</div>
+        <div class="vis-list" role="list" aria-label="Suggested visuals">
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>CSC landing page screenshot (section 01)</div>
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>Role-track tab UI showing program complexity</div>
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>A bilingual event asset from Colloque</div>
+          <div class="vis-item" role="listitem"><span style="color:var(--warm);flex-shrink:0">&#10022;</span>Persona framework diagram (recreated)</div>
+        </div>
+        <div class="vis-note">Blur or remove any confidential Microsoft data before publishing.</div>
+      </div>
+
+    </div>
+  </aside>
+  </div>
+
+  <!-- FOOTER NAV -->
+  <nav class="footer-nav" aria-label="Case study navigation">
+    <a class="fn-btn fn-back" href="/Users/helenalee/Downloads/Landing%20Page.html">&#8592; All work</a>
+    <a class="fn-btn fn-next" href="/cibc.html">Next: Analytics &amp; Strategy &#8594;</a>
+  </nav>
+
+</main>
+</body>
+</html>

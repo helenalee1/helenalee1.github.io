@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Bricolage Grotesque',sans-serif;color:var(--color-text-primary);background:transparent}
+
+:root{
+  --sky:#C8DCF0;--steel:#7AADD4;--deep:#4A7FA5;
+  --cream:#E8E0D0;--warm:#C9956A;--dark:#1C2B3A;--muted:#6B7F8E;
+  --blush:#F2E8E0;
+}
+
+.root{padding:0 0 2.5rem}
+
+/* ── CONTEXT BANNER ── */
+.ctx-banner{background:var(--color-background-secondary);border-radius:10px;border:.5px solid var(--color-border-tertiary);padding:11px 15px;margin-bottom:1.25rem;display:flex;gap:10px;align-items:flex-start}
+.ctx-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.ctx-title{font-size:11px;font-weight:500;margin-bottom:2px}
+.ctx-body{font-size:10px;color:var(--color-text-secondary);line-height:1.6}
+
+/* ── HEADER ── */
+.case-header{background:var(--dark);border-radius:14px;padding:30px 26px 26px;margin-bottom:1.25rem;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(55px);opacity:.25}
+.breadcrumb{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;position:relative;z-index:2}
+.company-line{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:7px;position:relative;z-index:2}
+.case-title{font-family:'Instrument Serif',serif;font-size:28px;color:#fff;line-height:1.2;margin-bottom:9px;position:relative;z-index:2}
+.case-title em{font-style:italic;color:var(--sky)}
+.case-tagline{font-size:12px;color:rgba(255,255,255,.52);line-height:1.65;max-width:500px;position:relative;z-index:2;margin-bottom:18px}
+.meta-row{display:flex;gap:7px;flex-wrap:wrap;position:relative;z-index:2}
+.mpill{font-size:9px;padding:4px 11px;border-radius:20px;border:1px solid;letter-spacing:.06em}
+.p-blue{background:rgba(200,220,240,.11);border-color:rgba(200,220,240,.28);color:var(--sky)}
+.p-warm{background:rgba(201,149,106,.11);border-color:rgba(201,149,106,.32);color:#e8b88a}
+.p-cream{background:rgba(232,224,208,.09);border-color:rgba(232,224,208,.22);color:#d0c8b5}
+.p-rose{background:rgba(196,119,122,.12);border-color:rgba(196,119,122,.3);color:#e8a8aa}
+
+/* ── STATS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.25rem}
+.stat{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:10px;padding:13px 10px;text-align:center}
+.stat-num{font-family:'Instrument Serif',serif;font-size:24px;color:var(--deep);line-height:1;margin-bottom:4px}
+.stat-label{font-size:9px;color:var(--color-text-tertiary);letter-spacing:.05em;text-transform:uppercase;line-height:1.45}
+
+/* ── LAYOUT ── */
+.case-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+
+/* ── SECTION ── */
+.sec{border:.5px solid var(--color-border-tertiary);border-radius:12px;overflow:hidden;background:var(--color-background-primary);margin-bottom:12px}
+.sec:last-child{margin-bottom:0}
+.sec-head{padding:12px 17px 10px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:9px}
+.sec-num{font-family:'Instrument Serif',serif;font-size:19px;color:var(--steel)}
+.sec-title{font-size:12px;font-weight:500}
+.sec-badge{font-size:9px;color:var(--color-text-tertiary);margin-left:auto;letter-spacing:.07em;text-transform:uppercase}
+.sec-body{padding:15px 17px}
+
+p.body{font-size:11px;color:var(--color-text-secondary);line-height:1.75;margin-bottom:11px}
+p.body:last-child{margin-bottom:0}
+p.body strong{color:var(--color-text-primary);font-weight:500}
+
+.pull-quote{font-family:'Instrument Serif',serif;font-size:13px;font-style:italic;color:var(--color-text-primary);border-left:2px solid var(--warm);padding-left:13px;margin:12px 0;line-height:1.55}
+
+.highlight{background:var(--color-background-secondary);border-radius:8px;border-left:2px solid var(--steel);padding:10px 14px;margin:10px 0;font-size:11px;color:var(--color-text-secondary);line-height:1.65}
+.highlight strong{color:var(--color-text-primary);font-weight:500}
+
+/* ── EVIDENCE DIVIDER ── */
+.ev-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:16px 0 10px;display:flex;align-items:center;gap:8px}
+.ev-label::after{content:'';flex:1;height:.5px;background:var(--color-border-tertiary)}
+
+/* ── METRIC TRIO ── */
+.metric-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.mt-card{background:var(--color-background-secondary);border-radius:8px;padding:11px 10px;text-align:center;border:.5px solid var(--color-border-tertiary)}
+.mt-num{font-family:'Instrument Serif',serif;font-size:22px;color:var(--deep);line-height:1;margin-bottom:3px}
+.mt-label{font-size:9px;color:var(--color-text-secondary);line-height:1.4}
+
+/* ── REEL CARDS ── */
+.reel-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:4px}
+.reel-card{border-radius:8px;overflow:hidden;border:.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.reel-thumb{position:relative;aspect-ratio:9/13;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.reel-platform{position:absolute;top:6px;left:6px;font-size:7px;padding:2px 6px;border-radius:3px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;z-index:3}
+.badge-yt{background:#FF0000;color:#fff}
+.reel-play{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;z-index:3;position:relative}
+.play-tri{width:0;height:0;border-style:solid;border-width:5px 0 5px 9px;border-color:transparent transparent transparent rgba(255,255,255,.9);margin-left:2px}
+.reel-views-wrap{position:absolute;bottom:6px;left:0;right:0;text-align:center;z-index:3}
+.reel-views-num{font-family:'Instrument Serif',serif;font-size:15px;color:#fff;line-height:1}
+.reel-views-lbl{font-size:7px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.05em}
+.reel-meta{padding:8px 9px}
+.reel-src{font-size:8px;font-weight:600;color:var(--color-text-tertiary);letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.reel-ttl{font-size:9px;color:var(--color-text-primary);line-height:1.4;margin-bottom:4px}
+.reel-insight{font-size:9px;padding:3px 7px;border-radius:4px;background:var(--sky);color:var(--deep);font-weight:500;line-height:1.4}
+
+/* ── COMPETITOR GRID ── */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 10px}
+.comp-card{border:.5px solid var(--color-border-tertiary);border-radius:8px;overflow:hidden;background:var(--color-background-primary)}
+.cc-head{padding:7px 10px;display:flex;align-items:center;gap:7px;border-bottom:.5px solid var(--color-border-tertiary)}
+.cc-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;flex-shrink:0}
+.cc-handle{font-size:9px;font-weight:500}
+.cc-platform{font-size:8px;color:var(--color-text-tertiary)}
+.cc-thumb{height:70px;overflow:hidden;position:relative}
+.cc-caption{padding:7px 9px}
+.cc-text{font-size:9px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:4px;font-style:italic}
+.cc-gap{font-size:8px;padding:2px 7px;border-radius:10px;background:#faeaea;color:#8a3a3a;font-weight:500;display:inline-block}
+
+/* ── PHASE TIMELINE ── */
+.phase-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
+.phase-card{border-radius:8px;overflow:hidden;border:.5px solid var(--color-border-tertiary)}
+.ph-head{padding:8px 12px;font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.ph1{background:var(--sky);color:var(--dark)}
+.ph2{background:var(--steel);color:#fff}
+.ph3{background:var(--blush);color:#6b3a3c;border:.5px solid #d9c4b8}
+.ph-body{padding:9px 12px;background:var(--color-background-primary)}
+.ph-dates{font-size:9px;color:var(--color-text-tertiary);margin-bottom:4px;font-weight:500}
+.ph-goal{font-size:10px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px}
+.ph-item{font-size:9px;color:var(--color-text-secondary);line-height:1.65;display:flex;gap:5px}
+.ph-dot{color:var(--steel);flex-shrink:0}
+
+/* ── PILLARS ── */
+.pillars-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
+.pillar{border-radius:8px;padding:11px 12px;text-align:center;border:.5px solid}
+.pl1{background:#edf4f9;border-color:#b4cfe8}
+.pl2{background:#f0f7f0;border-color:#a8d4a8}
+.pl3{background:var(--blush);border-color:#d9c4b8}
+.pillar-icon{font-size:16px;margin-bottom:4px}
+.pillar-name{font-size:10px;font-weight:600;margin-bottom:2px}
+.pl1 .pillar-name{color:var(--deep)}
+.pl2 .pillar-name{color:#2d7a2d}
+.pl3 .pillar-name{color:#8a5a36}
+.pillar-desc{font-size:9px;color:var(--color-text-secondary);line-height:1.45}
+
+/* ── AUDIENCE ── */
+.aud-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.aud-card{border-radius:8px;padding:11px 13px;border:.5px solid}
+.aud-primary{background:#edf4f9;border-color:#b4cfe8}
+.aud-secondary{background:var(--blush);border-color:#d9c4b8}
+.aud-lbl{font-size:8px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;margin-bottom:5px}
+.aud-primary .aud-lbl{color:var(--deep)}
+.aud-secondary .aud-lbl{color:#8a5a36}
+.aud-title{font-size:10px;font-weight:500;margin-bottom:5px}
+.aud-item{font-size:9px;color:var(--color-text-secondary);line-height:1.6;display:flex;gap:5px}
+
+/* ── CALENDAR ── */
+.cal-wrap{border:.5px solid var(--color-border-tertiary);border-radius:10px;overflow:hidden;margin:10px 0}
+.cal-hdr{background:var(--dark);padding:9px 13px;display:flex;align-items:center;justify-content:space-between}
+.cal-hdr-title{font-size:10px;color:#fff;font-weight:500}
+.cal-hdr-month{font-size:9px;color:rgba(255,255,255,.45)}
+.cal-days-hdr{display:grid;grid-template-columns:repeat(7,1fr);background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary)}
+.cal-day-h{font-size:7px;color:var(--color-text-tertiary);text-align:center;padding:4px 2px;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.cal-body{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-cell{border-right:.5px solid var(--color-border-tertiary);border-bottom:.5px solid var(--color-border-tertiary);padding:3px;min-height:46px;background:var(--color-background-primary)}
+.cal-cell:nth-child(7n){border-right:none}
+.cal-date{font-size:7px;color:var(--color-text-tertiary);margin-bottom:2px;font-weight:500;padding:1px 2px}
+.cal-ev{font-size:7px;border-radius:2px;padding:2px 3px;margin-bottom:2px;line-height:1.3;font-weight:500}
+.ev1{background:var(--sky);color:var(--dark)}
+.ev2{background:var(--steel);color:#fff}
+.ev3{background:#f3e8df;color:#8a5a36}
+.evi{background:#e8f3e8;color:#2d5a2d}
+.cal-empty{background:var(--color-background-secondary);opacity:.45}
+.cal-legend{display:flex;gap:10px;padding:7px 12px;background:var(--color-background-secondary);flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:4px;font-size:8px;color:var(--color-text-secondary)}
+.leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* ── KPI TABLE ── */
+.kpi-table{width:100%;border-collapse:collapse;font-size:10px;margin:10px 0}
+.kpi-table th{padding:7px 10px;background:var(--color-background-secondary);text-align:left;font-weight:500;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--color-text-tertiary);border-bottom:.5px solid var(--color-border-tertiary)}
+.kpi-table td{padding:7px 10px;border-bottom:.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:top;line-height:1.5}
+.kpi-table tr:last-child td{border:none}
+.kpi-table td:last-child{font-weight:500;color:var(--deep)}
+
+/* ── REFLECTION ── */
+.reflection{background:var(--blush);border-radius:8px;border-left:2px solid var(--warm);padding:12px 14px;margin:10px 0}
+.ref-title{font-size:9px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#8a5a36;margin-bottom:8px}
+.ref-item{display:flex;gap:8px;margin-bottom:7px;align-items:flex-start}
+.ref-item:last-child{margin-bottom:0}
+.ref-dot{width:17px;height:17px;border-radius:50%;background:var(--warm);display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;font-weight:600;flex-shrink:0;margin-top:1px}
+.ref-text{font-size:11px;color:var(--color-text-secondary);line-height:1.65}
+.ref-text strong{color:var(--color-text-primary);font-weight:500}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:11px;padding:10px 0;border-bottom:.5px solid var(--color-border-tertiary);align-items:flex-start}
+.step:last-child{border:none;padding-bottom:0}
+.step-dot{width:20px;height:20px;border-radius:50%;background:var(--sky);display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--deep);font-weight:600;flex-shrink:0;margin-top:1px}
+.step-title{font-size:11px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.step-body{font-size:11px;color:var(--color-text-secondary);line-height:1.65}
+
+/* ── DELIVERABLE CTA ── */
+.dl-cta{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:10px;padding:11px 14px;display:flex;gap:11px;align-items:center;margin-top:12px}
+.dl-icon{font-size:18px;flex-shrink:0}
+.dl-title{font-size:11px;font-weight:500;margin-bottom:2px}
+.dl-sub{font-size:10px;color:var(--color-text-secondary);line-height:1.5}
+.dl-link{font-size:9px;color:var(--deep);font-weight:500;margin-top:5px;display:inline-block;padding:3px 9px;background:var(--sky);border-radius:4px}
+
+/* ── TAGS ── */
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.tag{font-size:9px;padding:3px 9px;border-radius:4px;font-weight:500}
+.t-sky{background:var(--sky);color:var(--deep)}
+.t-warm{background:#f3e8df;color:#8a5a36}
+.t-dark{background:var(--color-background-secondary);color:var(--color-text-primary);border:.5px solid var(--color-border-tertiary)}
+
+/* ── SIDEBAR ── */
+.scard{border:.5px solid var(--color-border-tertiary);border-radius:12px;overflow:hidden;background:var(--color-background-primary);margin-bottom:10px}
+.scard:last-child{margin-bottom:0}
+.sc-head{padding:10px 14px;border-bottom:.5px solid var(--color-border-tertiary);font-size:11px;font-weight:500}
+.sc-body{padding:10px 14px}
+.sc-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:.5px solid var(--color-border-tertiary);gap:8px}
+.sc-row:last-child{border:none}
+.sc-key{font-size:10px;color:var(--color-text-tertiary)}
+.sc-val{font-size:10px;font-weight:500;text-align:right}
+.skill-wrap{display:flex;flex-wrap:wrap;gap:4px;padding:10px 14px}
+.skill{font-size:9px;padding:3px 9px;border-radius:20px;background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary)}
+
+.ind-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:.5px solid var(--color-border-tertiary);align-items:center;gap:6px}
+.ind-row:last-child{border:none}
+.ind-name{font-size:10px;color:var(--color-text-secondary);white-space:nowrap}
+.ind-bar-wrap{flex:1;height:5px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden}
+.ind-bar{height:100%;border-radius:3px}
+
+.standout-list{font-size:10px;color:var(--color-text-secondary);line-height:1.85}
+.standout-item{padding:3px 0;border-bottom:.5px solid var(--color-border-tertiary);display:flex;gap:6px}
+.standout-item:last-child{border:none}
+
+/* ── FOOTER ── */
+.footer-nav{display:flex;gap:10px;margin-top:2px}
+.fn-btn{flex:1;padding:11px 0;border-radius:8px;font-size:11px;font-weight:500;text-align:center;cursor:pointer;border:none;font-family:'Bricolage Grotesque',sans-serif}
+.fn-back{border:.5px solid var(--color-border-tertiary)!important;color:var(--color-text-secondary);background:var(--color-background-primary)}
+.fn-next{background:var(--dark);color:#fff}
+
+@media(max-width:640px){
+  .stats-row,.phase-row,.pillars-row,.reel-row,.aud-grid,.comp-grid,.metric-trio{grid-template-columns:1fr 1fr}
+  .reel-row,.pillars-row{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr}
+  .case-title{font-size:22px}
+}
+</style>
+</head>
+<body>
+<main class="root" role="main">
+
+  <!-- CONTEXT BANNER -->
+  <aside class="ctx-banner" aria-label="Project context">
+    <div class="ctx-icon">📋</div>
+    <div>
+      <div class="ctx-title">Take-home assignment — Maizon interview process</div>
+      <div class="ctx-body">Developed independently with no brief, no requirements, and no existing data. Full strategy document available to download below.</div>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="case-header" aria-label="Case study header">
+    <div class="blob" style="width:260px;height:260px;background:#C9956A;top:-100px;right:-50px" aria-hidden="true"></div>
+    <div class="blob" style="width:200px;height:200px;background:#7AADD4;bottom:-80px;left:-30px" aria-hidden="true"></div>
+    <div class="blob" style="width:130px;height:130px;background:#C4777A;top:10px;left:200px" aria-hidden="true"></div>
+    <p class="breadcrumb">Portfolio — Social Media &amp; Brand</p>
+    <p class="company-line">Palgong Tea (Steeles) &nbsp;·&nbsp; Maizon Take-Home Assignment &nbsp;·&nbsp; 2025</p>
+    <h1 class="case-title">Bringing K-culture to Toronto —<br><em>Taste of Korea</em> at Palgong Tea</h1>
+    <p class="case-tagline">A full two-month go-to-market and social media strategy for Palgong Tea's new self-serve ramen machines — built from scratch with no brief, grounded in competitive research, cultural audience insight, and a phased content calendar across 30+ touchpoints.</p>
+    <div class="meta-row" role="list">
+      <span class="mpill p-blue" role="listitem">Social Media Strategy</span>
+      <span class="mpill p-blue" role="listitem">Campaign Planning</span>
+      <span class="mpill p-blue" role="listitem">Content Calendar</span>
+      <span class="mpill p-warm" role="listitem">Side Project</span>
+      <span class="mpill p-rose" role="listitem">Interview Assignment</span>
+      <span class="mpill p-cream" role="listitem">Gen Z · Toronto</span>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats-row" aria-label="Project scope">
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Month campaign planned</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Distinct campaign phases</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Competitors researched</div></div>
+    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Brief provided — built from scratch</div></div>
+  </section>
+
+  <!-- MAIN + SIDEBAR -->
+  <div class="case-grid">
+  <div>
+
+    <!-- 01 CONTEXT -->
+    <article class="sec" aria-labelledby="s1">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">01</span>
+        <h2 class="sec-title" id="s1">The brief — and what it wasn't</h2>
+        <span class="sec-badge">Context</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">Palgong Tea's Steeles location had just re-opened after a long hiatus and was introducing something new: <strong>self-serve ramen machines</strong>, inspired by the viral Han River ramen trend from Korea. The concept — customers selecting and preparing their own instant ramen, alongside Palgong's signature bubble teas — was already a cultural moment in Seoul, spreading globally through K-entertainment.</p>
+        <p class="body">For the Maizon take-home, I was given the concept and nothing else. My task was to figure out what the opportunity was, prove it with research, and build a full strategy to go after it.</p>
+        <div class="pull-quote">"The absence of a brief was the brief — the assignment tested whether I could build structure from ambiguity."</div>
+        <div class="highlight"><strong>Starting point:</strong> The @palgongtea.steeles account had under 100 followers. Any strategy had to begin with organic community-building — meaning sequencing mattered as much as the ideas themselves.</div>
+      </div>
+    </article>
+
+    <!-- 02 RESEARCH + EVIDENCE -->
+    <article class="sec" aria-labelledby="s2">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">02</span>
+        <h2 class="sec-title" id="s2">The cultural moment — and the market gap</h2>
+        <span class="sec-badge">Research &amp; insight</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">Before writing a single content idea, I needed to prove the opportunity was real. I started with the cultural data — mapping how large the existing appetite for this concept already was through K-entertainment content — then moved to the competitive landscape to find where Palgong could differentiate.</p>
+
+        <!-- VIRAL PROOF -->
+        <div class="ev-label">Cultural evidence — existing audience appetite</div>
+        <div class="metric-trio" aria-label="View count evidence">
+          <div class="mt-card"><div class="mt-num">8.6M</div><div class="mt-label">Views: "Amazing 24hr automated ramen machine" — YouTube</div></div>
+          <div class="mt-card"><div class="mt-num">791K</div><div class="mt-label">Views: Aespa eating ramyun at Han River — K-pop lifestyle content</div></div>
+          <div class="mt-card"><div class="mt-num">475K</div><div class="mt-label">Views: "Eating at a 24 Hours Instant Noodle Cafe" — lifestyle format</div></div>
+        </div>
+
+        <div class="reel-row" role="list" aria-label="Referenced research content">
+          <div class="reel-card" role="listitem">
+            <div class="reel-thumb" style="background:#1a0a0a">
+              <svg style="position:absolute;inset:0;opacity:.5" viewBox="0 0 90 117" aria-hidden="true"><rect x="20" y="25" width="50" height="65" rx="3" fill="none" stroke="rgba(255,255,255,.12)" stroke-width=".8"/><rect x="28" y="38" width="34" height="22" rx="2" fill="rgba(255,140,0,.15)" stroke="rgba(255,140,0,.3)" stroke-width=".5"/><circle cx="45" cy="78" r="7" fill="none" stroke="rgba(255,255,255,.15)" stroke-width=".6"/></svg>
+              <span class="reel-platform badge-yt" style="position:absolute;top:6px;left:6px;font-size:7px;padding:2px 6px;border-radius:3px;font-weight:600;background:#FF0000;color:#fff;z-index:3;letter-spacing:.04em">YouTube</span>
+              <div class="reel-play" aria-hidden="true"><div class="play-tri"></div></div>
+              <div class="reel-views-wrap"><div class="reel-views-num">8.6M</div><div class="reel-views-lbl">views</div></div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-src">YouTube</div>
+              <div class="reel-ttl">"Amazing 24 hour automated ramen machine"</div>
+              <div class="reel-insight">Mass appetite exists before any marketing spend</div>
+            </div>
+          </div>
+          <div class="reel-card" role="listitem">
+            <div class="reel-thumb" style="background:#0d1a2e">
+              <svg style="position:absolute;inset:0;opacity:.5" viewBox="0 0 90 117" aria-hidden="true"><ellipse cx="45" cy="72" rx="28" ry="7" fill="rgba(200,220,240,.08)" stroke="rgba(200,220,240,.18)" stroke-width=".6"/><circle cx="30" cy="62" r="5" fill="rgba(200,220,240,.12)" stroke="rgba(200,220,240,.25)" stroke-width=".5"/><circle cx="45" cy="57" r="5" fill="rgba(200,220,240,.12)" stroke="rgba(200,220,240,.25)" stroke-width=".5"/><circle cx="60" cy="62" r="5" fill="rgba(200,220,240,.12)" stroke="rgba(200,220,240,.25)" stroke-width=".5"/></svg>
+              <span class="reel-platform badge-yt" style="position:absolute;top:6px;left:6px;font-size:7px;padding:2px 6px;border-radius:3px;font-weight:600;background:#FF0000;color:#fff;z-index:3;letter-spacing:.04em">YouTube</span>
+              <div class="reel-play" aria-hidden="true"><div class="play-tri"></div></div>
+              <div class="reel-views-wrap"><div class="reel-views-num">791K</div><div class="reel-views-lbl">views</div></div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-src">YouTube · K-Pop</div>
+              <div class="reel-ttl">Aespa eating ramyun at Han River — "Perfect Carefree Day"</div>
+              <div class="reel-insight">Target audience already watches this — bridge is built</div>
+            </div>
+          </div>
+          <div class="reel-card" role="listitem">
+            <div class="reel-thumb" style="background:#1a1208">
+              <svg style="position:absolute;inset:0;opacity:.5" viewBox="0 0 90 117" aria-hidden="true"><rect x="18" y="38" width="54" height="42" rx="3" fill="none" stroke="rgba(201,149,106,.2)" stroke-width=".8"/><rect x="25" y="46" width="18" height="16" rx="2" fill="rgba(201,149,106,.1)" stroke="rgba(201,149,106,.25)" stroke-width=".5"/><rect x="47" y="46" width="18" height="16" rx="2" fill="rgba(201,149,106,.1)" stroke="rgba(201,149,106,.25)" stroke-width=".5"/></svg>
+              <span class="reel-platform badge-yt" style="position:absolute;top:6px;left:6px;font-size:7px;padding:2px 6px;border-radius:3px;font-weight:600;background:#FF0000;color:#fff;z-index:3;letter-spacing:.04em">YouTube</span>
+              <div class="reel-play" aria-hidden="true"><div class="play-tri"></div></div>
+              <div class="reel-views-wrap"><div class="reel-views-num">475K</div><div class="reel-views-lbl">views</div></div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-src">YouTube · Lifestyle</div>
+              <div class="reel-ttl">"Eating at a 24 Hours Instant Noodle Cafe"</div>
+              <div class="reel-insight">Late-night snack opportunity is real, not assumed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPETITOR RESEARCH -->
+        <div class="ev-label" style="margin-top:14px">Competitor social media — where the gap was</div>
+        <div class="comp-grid" role="list" aria-label="Competitor analysis">
+          <div class="comp-card" role="listitem">
+            <div class="cc-head">
+              <div class="cc-avatar" style="background:#ffeedd;color:#cc6600">SR</div>
+              <div><div class="cc-handle">The Self Ramen Bar</div><div class="cc-platform">Instagram · Toronto</div></div>
+            </div>
+            <div class="cc-thumb" style="background:#fff8f0">
+              <svg viewBox="0 0 160 70" width="100%" aria-hidden="true">
+                <rect x="8" y="8" width="68" height="54" rx="4" fill="#ffe0c0" stroke="#cc9966" stroke-width=".5"/>
+                <rect x="84" y="8" width="68" height="54" rx="4" fill="#ffe0c0" stroke="#cc9966" stroke-width=".5"/>
+                <text x="42" y="32" font-size="8" fill="#cc6600" text-anchor="middle" font-family="sans-serif" font-weight="600">UGC Reel</text>
+                <text x="118" y="32" font-size="8" fill="#cc6600" text-anchor="middle" font-family="sans-serif" font-weight="600">Halal ✓</text>
+                <text x="42" y="46" font-size="6" fill="#aa5500" text-anchor="middle" font-family="sans-serif">Solo lunch vibes</text>
+                <text x="118" y="46" font-size="6" fill="#aa5500" text-anchor="middle" font-family="sans-serif">Veg options</text>
+              </svg>
+            </div>
+            <div class="cc-caption">
+              <div class="cc-text">Strong UGC Reels, comfort/convenience messaging. Owns "cheap eats" and solo dining.</div>
+              <span class="cc-gap">Direct competitor — owns convenience lane</span>
+            </div>
+          </div>
+          <div class="comp-card" role="listitem">
+            <div class="cc-head">
+              <div class="cc-avatar" style="background:#e8f0fe;color:#1a56cc">CT</div>
+              <div><div class="cc-handle">ChatTime Canada</div><div class="cc-platform">Instagram · Canada</div></div>
+            </div>
+            <div class="cc-thumb" style="background:#f0f4ff">
+              <svg viewBox="0 0 160 70" width="100%" aria-hidden="true">
+                <rect x="8" y="8" width="144" height="54" rx="4" fill="#dde8ff" stroke="#aabcee" stroke-width=".5"/>
+                <text x="80" y="28" font-size="9" fill="#1a56cc" text-anchor="middle" font-family="sans-serif" font-weight="700">🎁 GIVEAWAY</text>
+                <text x="80" y="42" font-size="7" fill="#3366cc" text-anchor="middle" font-family="sans-serif">Taylor Swift album + $50 gift card</text>
+                <text x="80" y="54" font-size="6" fill="#4477cc" text-anchor="middle" font-family="sans-serif">New Era collab · First 200 customers</text>
+              </svg>
+            </div>
+            <div class="cc-caption">
+              <div class="cc-text">High-frequency giveaways and brand collabs. Owns community-building through partnerships.</div>
+              <span class="cc-gap">Owns giveaway &amp; collab lane</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight"><strong>The gap:</strong> No competitor was using experiential storytelling to connect a food concept to a cultural origin. Palgong Tea could own that space — not by outspending on giveaways, but by being the brand that makes Toronto feel like Seoul.</div>
+      </div>
+    </article>
+
+    <!-- 03 AUDIENCE -->
+    <article class="sec" aria-labelledby="s3">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <h2 class="sec-title" id="s3">Audience segmentation</h2>
+        <span class="sec-badge">Who we're reaching</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">I defined two distinct segments with different motivations — and made sure the strategy spoke to both without conflating them.</p>
+        <div class="aud-grid" role="list">
+          <div class="aud-card aud-primary" role="listitem">
+            <div class="aud-lbl">Primary</div>
+            <div class="aud-title">Gen Z &amp; Young Millennials (16–30)</div>
+            <div class="aud-item"><span style="color:var(--steel)">·</span>Students &amp; young professionals</div>
+            <div class="aud-item"><span style="color:var(--steel)">·</span>Heavy social media users, trend adopters</div>
+            <div class="aud-item"><span style="color:var(--steel)">·</span>Motivated by novelty, shareability, late-night comfort</div>
+          </div>
+          <div class="aud-card aud-secondary" role="listitem">
+            <div class="aud-lbl">Secondary</div>
+            <div class="aud-title">K-Culture Enthusiasts &amp; Trend Seekers</div>
+            <div class="aud-item"><span style="color:var(--warm)">·</span>K-pop fans &amp; Korean media followers</div>
+            <div class="aud-item"><span style="color:var(--warm)">·</span>Seek authentic Korea-inspired experiences in Toronto</div>
+            <div class="aud-item"><span style="color:var(--warm)">·</span>Drawn to "Instagrammable" cultural moments</div>
+          </div>
+        </div>
+        <div class="pull-quote">"The audience already knew what this experience was — they'd watched it on screen. The strategy's job was simply to bring it to them."</div>
+        <div class="tags" role="list">
+          <span class="tag t-sky" role="listitem">Instagram &amp; TikTok</span>
+          <span class="tag t-sky" role="listitem">Gen Z content habits</span>
+          <span class="tag t-warm" role="listitem">K-culture resonance</span>
+          <span class="tag t-dark" role="listitem">Toronto local</span>
+          <span class="tag t-dark" role="listitem">Influencer UGC</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 CAMPAIGN -->
+    <article class="sec" aria-labelledby="s4">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">04</span>
+        <h2 class="sec-title" id="s4">Campaign architecture — Taste of Korea</h2>
+        <span class="sec-badge">Strategy</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">I structured the campaign across three phases, each with a distinct goal. Given the near-zero follower count, phase sequencing was critical — you can't convert an audience you haven't built yet.</p>
+
+        <div class="phase-row" role="list" aria-label="Campaign phases">
+          <div class="phase-card" role="listitem">
+            <div class="ph-head ph1">Phase 1</div>
+            <div class="ph-body">
+              <div class="ph-dates">Jan 5–9 · Launch Buzz</div>
+              <div class="ph-goal">Build curiosity &amp; anticipation</div>
+              <div class="ph-item"><span class="ph-dot">·</span>Mystery teaser posts &amp; blurred Reels</div>
+              <div class="ph-item"><span class="ph-dot">·</span>Countdown Stories of setup process</div>
+            </div>
+          </div>
+          <div class="phase-card" role="listitem">
+            <div class="ph-head ph2">Phase 2</div>
+            <div class="ph-body">
+              <div class="ph-dates">Jan 12–30 · Launch Event</div>
+              <div class="ph-goal">Drive foot traffic &amp; trial</div>
+              <div class="ph-item"><span class="ph-dot" style="color:var(--steel)">·</span>Official launch + demo Reel</div>
+              <div class="ph-item"><span class="ph-dot" style="color:var(--steel)">·</span>Event Weekend: first 100 get 50% off bubble tea</div>
+              <div class="ph-item"><span class="ph-dot" style="color:var(--steel)">·</span>Influencer early-access + Aespa stitch Reel</div>
+              <div class="ph-item"><span class="ph-dot" style="color:var(--steel)">·</span>Cross-collab: BlogTO, Narcity, YYZDateideas</div>
+            </div>
+          </div>
+          <div class="phase-card" role="listitem">
+            <div class="ph-head ph3">Phase 3</div>
+            <div class="ph-body">
+              <div class="ph-dates">Feb 1–28 · Engage &amp; Maintain</div>
+              <div class="ph-goal">Sustain buzz via cultural moments</div>
+              <div class="ph-item"><span class="ph-dot" style="color:var(--warm)">·</span>Valentine's: riddle → DM code → in-store offer</div>
+              <div class="ph-item"><span class="ph-dot" style="color:var(--warm)">·</span>Zodiac combo graphic for shareability</div>
+              <div class="ph-item"><span class="ph-dot" style="color:var(--warm)">·</span>Lunar New Year content + potential pop-up</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pillars-row" role="list" aria-label="Strategy pillars">
+          <div class="pillar pl1" role="listitem"><div class="pillar-icon">👁</div><div class="pillar-name">Awareness &amp; Curiosity</div><div class="pillar-desc">Teaser content and cultural hooks that build anticipation</div></div>
+          <div class="pillar pl2" role="listitem"><div class="pillar-icon">🤝</div><div class="pillar-name">Engagement &amp; Trial</div><div class="pillar-desc">Activations and influencers that convert awareness to visits</div></div>
+          <div class="pillar pl3" role="listitem"><div class="pillar-icon">🌱</div><div class="pillar-name">Community</div><div class="pillar-desc">UGC and cultural moments that build a returning audience</div></div>
+        </div>
+
+        <!-- CONTENT CALENDAR -->
+        <div class="ev-label" style="margin-top:16px">My deliverable — content calendar (January 2026)</div>
+        <div class="cal-wrap" aria-label="Content calendar January 2026">
+          <div class="cal-hdr"><span class="cal-hdr-title">Social Content Calendar — Taste of Korea</span><span class="cal-hdr-month">January 2026</span></div>
+          <div class="cal-days-hdr" role="row">
+            <div class="cal-day-h" role="columnheader">Sun</div><div class="cal-day-h" role="columnheader">Mon</div><div class="cal-day-h" role="columnheader">Tue</div><div class="cal-day-h" role="columnheader">Wed</div><div class="cal-day-h" role="columnheader">Thu</div><div class="cal-day-h" role="columnheader">Fri</div><div class="cal-day-h" role="columnheader">Sat</div>
+          </div>
+          <div class="cal-body" role="grid">
+            <div class="cal-cell cal-empty" role="gridcell" aria-label="Empty"></div><div class="cal-cell cal-empty" role="gridcell" aria-label="Empty"></div><div class="cal-cell cal-empty" role="gridcell" aria-label="Empty"></div><div class="cal-cell cal-empty" role="gridcell" aria-label="Empty"></div><div class="cal-cell cal-empty" role="gridcell" aria-label="Empty"></div><div class="cal-cell" role="gridcell" aria-label="Jan 3"><div class="cal-date">3</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 4"><div class="cal-date">4</div></div>
+            <div class="cal-cell" role="gridcell" aria-label="Jan 5: Teaser Post — Launch Buzz"><div class="cal-date">5</div><div class="cal-ev ev1">Teaser Post</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 6: Story"><div class="cal-date">6</div><div class="cal-ev ev1">Story</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 7: Teaser Reel"><div class="cal-date">7</div><div class="cal-ev ev1">Teaser Reel</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 8"><div class="cal-date">8</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 9: Story"><div class="cal-date">9</div><div class="cal-ev ev1">Story</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 10"><div class="cal-date">10</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 11"><div class="cal-date">11</div></div>
+            <div class="cal-cell" role="gridcell" aria-label="Jan 12: Launch Post + How it Works Reel"><div class="cal-date">12</div><div class="cal-ev ev2">Launch Post</div><div class="cal-ev ev2">How It Works</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 13: Event Announcement"><div class="cal-date">13</div><div class="cal-ev ev2">Event Announ.</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 14: Event Weekend post"><div class="cal-date">14</div><div class="cal-ev ev2">Event Weekend</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 15"><div class="cal-date">15</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 16: Repost influencer content"><div class="cal-date">16</div><div class="cal-ev evi">Influencer</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 17: Aespa Reel"><div class="cal-date">17</div><div class="cal-ev ev2">Aespa Reel</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 18"><div class="cal-date">18</div></div>
+            <div class="cal-cell" role="gridcell" aria-label="Jan 19: Influencer repost + Team ramen Reel"><div class="cal-date">19</div><div class="cal-ev evi">Influencer</div><div class="cal-ev ev2">Team Ramen</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 20: Late Night Reel"><div class="cal-date">20</div><div class="cal-ev ev2">Late Night Reel</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 21: Countdown post"><div class="cal-date">21</div><div class="cal-ev ev2">Countdown</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 22"><div class="cal-date">22</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 23: See you tomorrow"><div class="cal-date">23</div><div class="cal-ev ev2">See You Tomorrow</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 24 to 25: Event Weekend"><div class="cal-date">24–25</div><div class="cal-ev ev2">✦ Event Weekend</div></div><div class="cal-cell cal-empty" role="gridcell" aria-label="Empty"></div>
+            <div class="cal-cell" role="gridcell" aria-label="Jan 26: Post-event reflection"><div class="cal-date">26</div><div class="cal-ev ev2">Reflection</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 27: Post-event Reel"><div class="cal-date">27</div><div class="cal-ev ev2">Reflection Reel</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 28"><div class="cal-date">28</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 29: Cross-collab reposts"><div class="cal-date">29</div><div class="cal-ev evi">Cross-collab</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 30"><div class="cal-date">30</div></div><div class="cal-cell" role="gridcell" aria-label="Jan 31"><div class="cal-date">31</div></div><div class="cal-cell cal-empty" role="gridcell" aria-label="Empty"></div>
+          </div>
+          <div class="cal-legend" role="list" aria-label="Calendar legend">
+            <div class="leg-item" role="listitem"><div class="leg-dot" style="background:var(--sky)"></div>Phase 1: Launch Buzz</div>
+            <div class="leg-item" role="listitem"><div class="leg-dot" style="background:var(--steel)"></div>Phase 2: Launch Event</div>
+            <div class="leg-item" role="listitem"><div class="leg-dot" style="background:#c8e8c8"></div>Influencer / Cross-collab</div>
+            <div class="leg-item" role="listitem"><div class="leg-dot" style="background:#f3e8df"></div>Phase 3: Engage &amp; Maintain</div>
+          </div>
+        </div>
+
+        <div class="dl-cta" aria-label="Download full strategy">
+          <div class="dl-icon">📄</div>
+          <div>
+            <div class="dl-title">Full strategy document</div>
+            <div class="dl-sub">Complete content calendar, copy direction for every post, competitor analysis, persona framework, and KPI targets across both months.</div>
+            <span class="dl-link">Download PDF →</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 METRICS -->
+    <article class="sec" aria-labelledby="s5">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">05</span>
+        <h2 class="sec-title" id="s5">Success metrics</h2>
+        <span class="sec-badge">KPIs</span>
+      </div>
+      <div class="sec-body">
+        <table class="kpi-table" aria-label="Key performance indicators">
+          <thead><tr><th scope="col">Goal</th><th scope="col">KPI</th><th scope="col">Target</th></tr></thead>
+          <tbody>
+            <tr><td>Drive foot traffic</td><td>In-store customer count</td><td>+50% Jan · +25% Feb</td></tr>
+            <tr><td>Social engagement</td><td>Views, likes, comments, followers</td><td>10k Reel views · 1.5× follower growth to 8,000+</td></tr>
+            <tr><td>Impression growth</td><td>Digital impressions</td><td>1.5× increase</td></tr>
+            <tr><td>UGC &amp; influencer reach</td><td>Tagged posts within 2 weeks of launch</td><td>5+ tagged posts</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight"><strong>Measurement note:</strong> I anchored the follower target to an absolute number (8,000) rather than a percentage — percentages are misleading at near-zero baselines. Foot traffic was split into two tiers to account for natural post-launch decay.</div>
+      </div>
+    </article>
+
+    <!-- 06 CRITICAL REFLECTION -->
+    <article class="sec" aria-labelledby="s6">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">06</span>
+        <h2 class="sec-title" id="s6">What I pushed back on</h2>
+        <span class="sec-badge">Brand thinking</span>
+      </div>
+      <div class="sec-body">
+        <p class="body">Rather than just deliver a strategy that said yes to everything, I included a section challenging assumptions about the collaboration — because brand consistency is a real risk a good marketing strategy shouldn't ignore.</p>
+        <div class="reflection" role="note" aria-label="Brand risk analysis">
+          <div class="ref-title">Brand risks I flagged</div>
+          <div class="ref-item">
+            <div class="ref-dot">1</div>
+            <div class="ref-text"><strong>Ambience tension:</strong> Palgong Tea built its reputation on calm, inviting spaces for tea and study. Aromatic instant ramen could subtly shift the store's atmosphere and confuse regular visitors.</div>
+          </div>
+          <div class="ref-item">
+            <div class="ref-dot">2</div>
+            <div class="ref-text"><strong>My recommendation:</strong> Position it as a <em>location-exclusive feature or limited-time cultural event</em> — not a permanent menu change. Protects the parent brand while giving Steeles permission to experiment.</div>
+          </div>
+          <div class="ref-item">
+            <div class="ref-dot">3</div>
+            <div class="ref-text"><strong>The upside case:</strong> K-culture's global momentum creates a window that won't always be open — making this a bold but defensible opportunity if scoped correctly.</div>
+          </div>
+        </div>
+        <div class="pull-quote">"The best strategy isn't the one that says yes to everything — it's the one that earns its yes by naming the tradeoffs first."</div>
+      </div>
+    </article>
+
+    <!-- 07 LEARNINGS -->
+    <article class="sec" aria-labelledby="s7">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">07</span>
+        <h2 class="sec-title" id="s7">What I learned</h2>
+        <span class="sec-badge">Reflection</span>
+      </div>
+      <div class="sec-body">
+        <div class="steps" role="list">
+          <div class="step" role="listitem">
+            <div class="step-dot">1</div>
+            <div><div class="step-title">Audience sequencing matters as much as audience targeting</div><div class="step-body">Starting from near-zero meant I couldn't just build a campaign — I had to build an audience first. Phase 1 existed entirely to earn the right to run Phase 2.</div></div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot">2</div>
+            <div><div class="step-title">Cultural resonance has to be earned, not borrowed</div><div class="step-body">The K-culture angle worked because the product genuinely originated from that context. Manufactured cultural relevance tends to backfire; real alignment compounds.</div></div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-dot">3</div>
+            <div><div class="step-title">A good brief includes the questions it doesn't answer</div><div class="step-body">Working without a brief forced me to write one — to define what success meant, what constraints existed, and what tradeoffs the brand should consider. That process taught me more about strategic framing than any guided assignment would have.</div></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside aria-label="Project details">
+    <div class="scard">
+      <div class="sc-head">Project details</div>
+      <div class="sc-body">
+        <div class="sc-row"><span class="sc-key">Brand</span><span class="sc-val">Palgong Tea (Steeles)</span></div>
+        <div class="sc-row"><span class="sc-key">Type</span><span class="sc-val">Take-home assignment</span></div>
+        <div class="sc-row"><span class="sc-key">For</span><span class="sc-val">Maizon interview</span></div>
+        <div class="sc-row"><span class="sc-key">Campaign</span><span class="sc-val">Jan–Feb 2026</span></div>
+        <div class="sc-row"><span class="sc-key">Platforms</span><span class="sc-val">Instagram · TikTok</span></div>
+        <div class="sc-row"><span class="sc-key">Audience</span><span class="sc-val">Gen Z, K-culture fans</span></div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="sc-head">Skills demonstrated</div>
+      <div class="skill-wrap" role="list">
+        <span class="skill" role="listitem">Campaign strategy</span>
+        <span class="skill" role="listitem">Audience research</span>
+        <span class="skill" role="listitem">Competitive analysis</span>
+        <span class="skill" role="listitem">Content planning</span>
+        <span class="skill" role="listitem">Content calendar</span>
+        <span class="skill" role="listitem">KPI setting</span>
+        <span class="skill" role="listitem">Influencer strategy</span>
+        <span class="skill" role="listitem">Experiential marketing</span>
+        <span class="skill" role="listitem">Brand risk analysis</span>
+        <span class="skill" role="listitem">Cultural trend analysis</span>
+        <span class="skill" role="listitem">Copy direction</span>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="sc-head">What makes this stand out</div>
+      <div class="sc-body">
+        <div class="standout-list" role="list">
+          <div class="standout-item" role="listitem"><span style="color:var(--warm)">✦</span><span>Built with zero brief and zero data</span></div>
+          <div class="standout-item" role="listitem"><span style="color:var(--warm)">✦</span><span>Competitive landscape researched independently</span></div>
+          <div class="standout-item" role="listitem"><span style="color:var(--warm)">✦</span><span>Cultural evidence quantified (view counts)</span></div>
+          <div class="standout-item" role="listitem"><span style="color:var(--warm)">✦</span><span>Full content calendar — 30+ touchpoints</span></div>
+          <div class="standout-item" role="listitem"><span style="color:var(--warm)">✦</span><span>Critiques its own brief — flags brand risk</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scard">
+      <div class="sc-head">Relevance by industry</div>
+      <div class="sc-body" role="list">
+        <div class="ind-row" role="listitem"><span class="ind-name">🎵 Music</span><div class="ind-bar-wrap" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Music: very strong"><div class="ind-bar" style="width:92%;background:var(--warm)"></div></div></div>
+        <div class="ind-row" role="listitem"><span class="ind-name">💻 Tech</span><div class="ind-bar-wrap" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Tech: strong"><div class="ind-bar" style="width:75%;background:var(--deep)"></div></div></div>
+        <div class="ind-row" role="listitem"><span class="ind-name">🏥 Healthcare</span><div class="ind-bar-wrap" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" aria-label="Healthcare: moderate"><div class="ind-bar" style="width:55%;background:var(--steel)"></div></div></div>
+        <div class="ind-row" role="listitem"><span class="ind-name">🏦 Banking</span><div class="ind-bar-wrap" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="Banking: lower"><div class="ind-bar" style="width:38%;background:var(--sky)"></div></div></div>
+      </div>
+    </div>
+  </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <nav class="footer-nav" aria-label="Case study navigation">
+    <button class="fn-btn fn-back" aria-label="Previous: Ricoh Canada">← Ricoh Canada</button>
+    <button class="fn-btn fn-next" aria-label="Next: TEDxUW">Next: TEDxUW →</button>
+  </nav>
+
+</main>
+</body>
+</html>

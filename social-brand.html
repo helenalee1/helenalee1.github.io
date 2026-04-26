@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Social Media & Brand — Helena Lee Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',sans-serif;background:#F4F1ED;color:#1C2B3A;-webkit-font-smoothing:antialiased}
+:root{
+  --sky:#C8DCF0;--steel:#7AADD4;--deep:#4A7FA5;
+  --cream:#E8E0D0;--warm:#C9956A;--dark:#1C2B3A;--muted:#6B7F8E;
+  --offwhite:#F4F1ED;--white:#fff;--border:#e2ddd6;--text:#4A5568;
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(244,241,237,.92);backdrop-filter:blur(12px);border-bottom:.5px solid var(--border);padding:0 18%;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:18px;color:var(--dark);text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links a{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--dark)}
+.nav-back{font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:.04em;display:flex;align-items:center;gap:6px;transition:color .15s}
+.nav-back:hover{color:var(--dark)}
+
+/* PAGE */
+.page{max-width:960px;margin:0 auto;padding:96px 24px 80px}
+
+/* PILLAR HEADER */
+.pillar-header{
+  background:var(--dark);border-radius:16px;padding:40px 40px 36px;
+  margin-bottom:40px;position:relative;overflow:hidden;
+}
+.ph-blob{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+.ph-eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin-bottom:10px;position:relative;z-index:2}
+.ph-num{font-family:'Instrument Serif',serif;font-size:13px;color:rgba(255,255,255,.25);position:relative;z-index:2;margin-bottom:6px}
+.ph-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,4vw,42px);color:#fff;line-height:1.15;margin-bottom:12px;position:relative;z-index:2}
+.ph-title em{font-style:italic;color:#f3c89a}
+.ph-body{font-size:13px;color:rgba(255,255,255,.45);line-height:1.75;max-width:520px;position:relative;z-index:2;font-weight:300}
+
+/* TYPE FILTERS */
+.type-row{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.type-tag{
+  font-size:10px;padding:5px 14px;border-radius:20px;
+  border:.5px solid var(--border);color:var(--muted);background:var(--white);
+  cursor:pointer;transition:all .15s;font-weight:500;letter-spacing:.04em;
+}
+.type-tag.active,.type-tag:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
+.type-tag.warm.active,.type-tag.warm:hover{background:var(--warm);border-color:var(--warm);color:#fff}
+
+/* SECTION LABEL */
+.sec-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:20px}
+.sub-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:36px 0 16px;padding-bottom:8px;border-bottom:.5px solid var(--border)}
+
+/* PROJECT CARDS */
+.projects{display:flex;flex-direction:column;gap:16px;margin-bottom:16px}
+
+.proj-card{
+  background:var(--white);border:.5px solid var(--border);
+  border-radius:14px;overflow:hidden;text-decoration:none;display:block;
+  transition:border-color .15s, transform .12s;
+}
+.proj-card:hover{border-color:var(--warm);transform:translateY(-2px)}
+
+.pc-inner{display:grid;grid-template-columns:1fr auto}
+
+.pc-left{padding:26px 30px}
+.pc-eyebrow{font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:500}
+.pc-company{font-family:'Instrument Serif',serif;font-size:24px;color:var(--dark);line-height:1.15;margin-bottom:6px}
+.pc-role{font-size:12px;color:var(--muted);margin-bottom:14px;letter-spacing:.02em}
+.pc-tagline{font-size:13px;color:var(--text);line-height:1.7;max-width:480px;margin-bottom:18px;font-weight:300}
+.pc-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.pc-pill{font-size:9px;padding:3px 10px;border-radius:3px;font-weight:500;letter-spacing:.04em}
+.pill-sky{background:var(--sky);color:var(--deep)}
+.pill-warm{background:#f3e8df;color:#8a5a36}
+.pill-dark{background:var(--offwhite);color:var(--dark);border:.5px solid var(--border)}
+.pill-side{background:#f0eaff;color:#5533aa}
+.pc-stats{display:flex;gap:22px}
+.pc-stat-num{font-family:'Instrument Serif',serif;font-size:22px;color:var(--deep);line-height:1;margin-bottom:3px}
+.pc-stat-lbl{font-size:9px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;line-height:1.4}
+
+.pc-right{
+  width:150px;flex-shrink:0;border-left:.5px solid var(--border);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;padding:24px 18px;background:var(--offwhite);
+}
+.pc-arrow{
+  width:36px;height:36px;border-radius:50%;background:var(--dark);
+  display:flex;align-items:center;justify-content:center;transition:background .15s;
+}
+.proj-card:hover .pc-arrow{background:var(--warm)}
+.pc-arrow svg{display:block}
+.pc-cta{font-size:10px;color:var(--muted);text-align:center;letter-spacing:.04em;line-height:1.5}
+
+/* SIDE PROJECT CARD — slightly smaller */
+.proj-card.side-project{border-left:3px solid #f3e8df}
+.proj-card.side-project:hover{border-color:var(--warm);border-left-color:var(--warm)}
+.side-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#f0eaff;border:.5px solid #c8b4e8;
+  border-radius:4px;padding:3px 9px;
+  font-size:9px;font-weight:600;color:#5533aa;letter-spacing:.04em;
+  margin-bottom:12px;
+}
+
+/* SKILLS */
+.skills-section{background:var(--white);border:.5px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:40px}
+.sk-title{font-size:11px;font-weight:500;color:var(--dark);margin-bottom:14px}
+.skills-wrap{display:flex;gap:8px;flex-wrap:wrap}
+.skill{font-size:10px;padding:4px 11px;border-radius:20px;background:var(--offwhite);border:.5px solid var(--border);color:var(--dark)}
+
+/* PILLAR NAV */
+.pillar-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pn-card{background:var(--white);border:.5px solid var(--border);border-radius:12px;padding:20px 22px;text-decoration:none;display:block;transition:border-color .15s}
+.pn-card:hover{border-color:var(--steel)}
+.pn-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.pn-title{font-size:14px;font-weight:500;color:var(--dark)}
+.pn-home{background:var(--dark);border-color:var(--dark);grid-column:span 2;text-align:center}
+.pn-home:hover{border-color:#2d3f54;background:#2d3f54}
+.pn-home .pn-label{color:rgba(255,255,255,.4)}
+.pn-home .pn-title{color:#fff}
+
+@media(max-width:700px){
+  .pc-inner{grid-template-columns:1fr}
+  .pc-right{width:100%;flex-direction:row;border-left:none;border-top:.5px solid var(--border)}
+  .pillar-nav{grid-template-columns:1fr}
+  .pn-home{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Helena Lee</a>
+  <ul class="nav-links">
+    <li><a href="/#work">Work</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a class="nav-back" href="/#work">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    All work
+  </a>
+</nav>
+
+<main class="page" role="main">
+
+  <!-- PILLAR HEADER -->
+  <header class="pillar-header" aria-label="Pillar introduction">
+    <div class="ph-blob" style="width:260px;height:260px;background:var(--warm);top:-110px;right:-50px;opacity:.2" aria-hidden="true"></div>
+    <div class="ph-blob" style="width:200px;height:200px;background:var(--steel);bottom:-70px;left:30px;opacity:.18" aria-hidden="true"></div>
+    <p class="ph-eyebrow">Pillar 03</p>
+    <p class="ph-num">Social Media &amp; Brand</p>
+    <h1 class="ph-title">Audiences don't find you.<br>You <em>meet them</em> where they are.</h1>
+    <p class="ph-body">Three internships and two self-directed projects across brand storytelling, content systems, employee advocacy, and campaign design. Each one required understanding a specific audience deeply enough to reach them on their own terms — then building the infrastructure to do it consistently.</p>
+  </header>
+
+  <p class="sec-label">Select a case study</p>
+
+  <!-- INTERNSHIPS -->
+  <div class="sub-label">Internships</div>
+  <div class="projects" role="list">
+
+    <!-- RICOH -->
+    <a class="proj-card" href="/ricoh.html" role="listitem" aria-label="View Ricoh Canada case study">
+      <div class="pc-inner">
+        <div class="pc-left">
+          <p class="pc-eyebrow">Enterprise Tech &nbsp;&middot;&nbsp; Marketing Specialist Intern</p>
+          <h2 class="pc-company">Ricoh Canada</h2>
+          <p class="pc-role">Marketing Specialist Intern</p>
+          <p class="pc-tagline">Built Ricoh Canada's employee advocacy program from scratch on GaggleAMP — designing the content system, onboarding flow, and platform architecture that took the channel from dormant to driving a 1.5&times; lift in LinkedIn presence across 70+ employees within two months.</p>
+          <div class="pc-pills" role="list" aria-label="Skills">
+            <span class="pc-pill pill-sky">Employee Advocacy</span>
+            <span class="pc-pill pill-sky">Platform Architecture</span>
+            <span class="pc-pill pill-sky">Sales Enablement</span>
+            <span class="pc-pill pill-warm">GaggleAMP</span>
+            <span class="pc-pill pill-dark">LinkedIn Strategy</span>
+          </div>
+          <div class="pc-stats" role="list" aria-label="Key results">
+            <div role="listitem">
+              <div class="pc-stat-num">1.5&times;</div>
+              <div class="pc-stat-lbl">LinkedIn presence lift</div>
+            </div>
+            <div role="listitem">
+              <div class="pc-stat-num">70+</div>
+              <div class="pc-stat-lbl">Employees onboarded</div>
+            </div>
+            <div role="listitem">
+              <div class="pc-stat-num">0&#8594;1</div>
+              <div class="pc-stat-lbl">Built from scratch</div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-right" aria-hidden="true">
+          <div class="pc-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8h9M8.5 4l4 4-4 4" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="pc-cta">View case study</p>
+        </div>
+      </div>
+    </a>
+
+    <!-- TEDXUW -->
+    <a class="proj-card" href="/tedxuw.html" role="listitem" aria-label="View TEDxUW case study">
+      <div class="pc-inner">
+        <div class="pc-left">
+          <p class="pc-eyebrow">University of Waterloo &nbsp;&middot;&nbsp; Director of Marketing</p>
+          <h2 class="pc-company">TEDxUW</h2>
+          <p class="pc-role">Director of Marketing &nbsp;&middot;&nbsp; 7-person team</p>
+          <p class="pc-tagline">Led a 7-person marketing team to rebuild TEDxUW's digital presence from near-zero after a 5-year hiatus. With just one month of promotional runway, an organic short-form content strategy drove 5,500+ impressions, up to 19&times; platform growth, and 180+ attendees at the comeback conference.</p>
+          <div class="pc-pills" role="list" aria-label="Skills">
+            <span class="pc-pill pill-sky">Social Media Strategy</span>
+            <span class="pc-pill pill-sky">Short-form Video</span>
+            <span class="pc-pill pill-sky">Team Leadership</span>
+            <span class="pc-pill pill-warm">Brand Strategy</span>
+            <span class="pc-pill pill-dark">Content Calendar</span>
+          </div>
+          <div class="pc-stats" role="list" aria-label="Key results">
+            <div role="listitem">
+              <div class="pc-stat-num">19&times;</div>
+              <div class="pc-stat-lbl">Twitter impression growth</div>
+            </div>
+            <div role="listitem">
+              <div class="pc-stat-num">5,500+</div>
+              <div class="pc-stat-lbl">Organic accounts reached</div>
+            </div>
+            <div role="listitem">
+              <div class="pc-stat-num">180+</div>
+              <div class="pc-stat-lbl">Event attendees</div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-right" aria-hidden="true">
+          <div class="pc-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8h9M8.5 4l4 4-4 4" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="pc-cta">View case study</p>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- SIDE PROJECTS -->
+  <div class="sub-label">Side projects</div>
+  <div class="projects" role="list">
+
+    <!-- PALGONG TEA -->
+    <a class="proj-card side-project" href="/palgong.html" role="listitem" aria-label="View Palgong Tea case study">
+      <div class="pc-inner">
+        <div class="pc-left">
+          <p class="pc-eyebrow">Consumer Brand &nbsp;&middot;&nbsp; Campaign Strategy</p>
+          <h2 class="pc-company">Palgong Tea</h2>
+          <p class="pc-role">Take-home assignment &nbsp;&middot;&nbsp; Maizon interview process</p>
+          <span class="side-badge">&#9670; Self-directed &nbsp;&middot;&nbsp; No brief provided</span>
+          <p class="pc-tagline">A full two-month go-to-market and social media strategy for Palgong Tea's new self-serve ramen machines — built from scratch. Competitive research, cultural audience insight, phased campaign architecture, and a 30+ touchpoint content calendar, with a section critiquing the brand risk of the concept itself.</p>
+          <div class="pc-pills" role="list" aria-label="Skills">
+            <span class="pc-pill pill-sky">Campaign Strategy</span>
+            <span class="pc-pill pill-sky">Competitive Analysis</span>
+            <span class="pc-pill pill-warm">Cultural Trend Analysis</span>
+            <span class="pc-pill pill-side">Self-directed</span>
+          </div>
+          <div class="pc-stats" role="list" aria-label="Key results">
+            <div role="listitem">
+              <div class="pc-stat-num">3</div>
+              <div class="pc-stat-lbl">Campaign phases</div>
+            </div>
+            <div role="listitem">
+              <div class="pc-stat-num">4</div>
+              <div class="pc-stat-lbl">Competitors researched</div>
+            </div>
+            <div role="listitem">
+              <div class="pc-stat-num">30+</div>
+              <div class="pc-stat-lbl">Content touchpoints</div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-right" aria-hidden="true">
+          <div class="pc-arrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8h9M8.5 4l4 4-4 4" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p class="pc-cta">View case study</p>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="skills-section" aria-label="Skills across this pillar">
+    <div class="sk-title">Skills across this pillar</div>
+    <div class="skills-wrap" role="list">
+      <span class="skill" role="listitem">Social media strategy</span>
+      <span class="skill" role="listitem">Short-form video</span>
+      <span class="skill" role="listitem">Content calendar</span>
+      <span class="skill" role="listitem">Employee advocacy</span>
+      <span class="skill" role="listitem">Platform architecture</span>
+      <span class="skill" role="listitem">Sales enablement</span>
+      <span class="skill" role="listitem">Brand strategy</span>
+      <span class="skill" role="listitem">Team leadership</span>
+      <span class="skill" role="listitem">Campaign planning</span>
+      <span class="skill" role="listitem">Influencer strategy</span>
+      <span class="skill" role="listitem">Audience research</span>
+      <span class="skill" role="listitem">Analytics tracking</span>
+      <span class="skill" role="listitem">Mailchimp</span>
+      <span class="skill" role="listitem">Cultural trend analysis</span>
+      <span class="skill" role="listitem">GaggleAMP</span>
+      <span class="skill" role="listitem">Instagram &amp; TikTok</span>
+    </div>
+  </div>
+
+  <!-- PILLAR NAV -->
+  <nav class="pillar-nav" aria-label="Navigate between pillars">
+    <a class="pn-card" href="/microsoft.html">
+      <div class="pn-label">Pillar 01</div>
+      <div class="pn-title">Project Management &amp; Ownership</div>
+    </a>
+    <a class="pn-card" href="/analytics-strategy.html">
+      <div class="pn-label">Pillar 02</div>
+      <div class="pn-title">Analytics &amp; Strategy</div>
+    </a>
+    <a class="pn-card pn-home" href="/">
+      <div class="pn-label">Back to</div>
+      <div class="pn-title">Home</div>
+    </a>
+  </nav>
+
+</main>
+</body>
+</html>

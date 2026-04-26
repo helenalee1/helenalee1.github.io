@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>KiiiKiii Music Strategy — Helena Lee Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      background: #F4F1ED;
+      color: #1C2B3A;
+      -webkit-font-smoothing: antialiased
+    }
+
+    :root {
+      --sky: #C8DCF0;
+      --steel: #7AADD4;
+      --deep: #4A7FA5;
+      --cream: #E8E0D0;
+      --warm: #C9956A;
+      --dark: #1C2B3A;
+      --muted: #6B7F8E;
+      --offwhite: #F4F1ED;
+      --white: #fff;
+      --border: #e2ddd6;
+      --text: #4A5568;
+      --pink: #E8A0B4;
+      --pink-light: #fdf0f4;
+      --pink-mid: #f7d0dc;
+      --y2k: #D4A8E0;
+      --y2k-light: #f8f0fc;
+    }
+
+    /* NAV */
+    nav {
+      z-index: 100;
+      background: rgba(244, 241, 237, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: .5px solid var(--border);
+      padding: 0 5%;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .nav-logo {
+      font-family: 'Instrument Serif', serif;
+      font-size: 18px;
+      color: var(--dark);
+      text-decoration: none
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .15s
+    }
+
+    .nav-links a:hover {
+      color: var(--dark)
+    }
+
+    .nav-back {
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .15s
+    }
+
+    .nav-back:hover {
+      color: var(--dark)
+    }
+
+    /* PAGE */
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 24px 80px
+    }
+
+    /* HEADER */
+    .case-header {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 36px 36px 32px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none
+    }
+
+    .ch-breadcrumb {
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2
+    }
+
+    .ch-company {
+      font-size: 10px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .3);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 2
+    }
+
+    .ch-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      color: #fff;
+      line-height: 1.18;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2
+    }
+
+    .ch-title em {
+      font-style: italic;
+      color: var(--pink)
+    }
+
+    .ch-tagline {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .48);
+      line-height: 1.7;
+      max-width: 560px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 20px;
+      font-weight: 300
+    }
+
+    .ch-pills {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2
+    }
+
+    .pill {
+      font-size: 9px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid;
+      letter-spacing: .06em
+    }
+
+    .pill-pink {
+      background: rgba(232, 160, 180, .14);
+      border-color: rgba(232, 160, 180, .35);
+      color: #f4b8c8
+    }
+
+    .pill-warm {
+      background: rgba(201, 149, 106, .11);
+      border-color: rgba(201, 149, 106, .32);
+      color: #e8b88a
+    }
+
+    .pill-cream {
+      background: rgba(232, 224, 208, .09);
+      border-color: rgba(232, 224, 208, .22);
+      color: #d0c8b5
+    }
+
+    .pill-blue {
+      background: rgba(200, 220, 240, .11);
+      border-color: rgba(200, 220, 240, .28);
+      color: var(--sky)
+    }
+
+    .pill-purp {
+      background: rgba(212, 168, 224, .14);
+      border-color: rgba(212, 168, 224, .35);
+      color: #e4bef4
+    }
+
+    /* CONTEXT BANNER */
+    .context-banner {
+      background: var(--offwhite);
+      border: .5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start
+    }
+
+    .cb-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .cb-title {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 3px
+    }
+
+    .cb-body {
+      font-size: 11px;
+      color: var(--text);
+      line-height: 1.65
+    }
+
+    /* STATS */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 24px
+    }
+
+    .stat {
+      background: var(--white);
+      border: .5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 14px;
+      text-align: center
+    }
+
+    .stat-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px;
+      color: var(--deep);
+      line-height: 1;
+      margin-bottom: 6px
+    }
+
+    .stat-num.pink {
+      color: #c0607a
+    }
+
+    .stat-label {
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      line-height: 1.5
+    }
+
+    /* MAIN GRID */
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 20px
+    }
+
+    /* SECTIONS */
+    .sec {
+      border: .5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--white);
+      margin-bottom: 14px
+    }
+
+    .sec:last-child {
+      margin-bottom: 0
+    }
+
+    .sec-head {
+      padding: 14px 20px 12px;
+      border-bottom: .5px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .sec-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 20px;
+      color: var(--steel)
+    }
+
+    .sec-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark)
+    }
+
+    .sec-badge {
+      font-size: 9px;
+      color: var(--muted);
+      margin-left: auto;
+      letter-spacing: .08em;
+      text-transform: uppercase
+    }
+
+    .sec-body {
+      padding: 18px 20px
+    }
+
+    p.body {
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.78;
+      margin-bottom: 12px
+    }
+
+    p.body:last-child {
+      margin-bottom: 0
+    }
+
+    p.body strong {
+      color: var(--dark);
+      font-weight: 500
+    }
+
+    .hl {
+      background: #f7f4f0;
+      border-radius: 8px;
+      border-left: 2.5px solid var(--steel);
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: 11.5px;
+      color: var(--text);
+      line-height: 1.7
+    }
+
+    .hl strong {
+      color: var(--dark);
+      font-weight: 500
+    }
+
+    .hl-pink {
+      background: var(--pink-light);
+      border-left-color: #c0607a
+    }
+
+    .hl-purp {
+      background: var(--y2k-light);
+      border-left-color: #9b6db0
+    }
+
+    /* EVIDENCE LABEL */
+    .evl {
+      font-size: 9px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin: 18px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .evl::after {
+      content: '';
+      flex: 1;
+      height: .5px;
+      background: var(--border)
+    }
+
+    /* 4C FRAMEWORK GRID */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 10px 0
+    }
+
+    .fw-card {
+      border-radius: 10px;
+      padding: 14px 16px;
+      border: .5px solid
+    }
+
+    .fw-1 {
+      background: #edf4f9;
+      border-color: #b4cfe8
+    }
+
+    .fw-2 {
+      background: var(--y2k-light);
+      border-color: #c8a8d8
+    }
+
+    .fw-3 {
+      background: #f3e8df;
+      border-color: #d9b898
+    }
+
+    .fw-4 {
+      background: var(--pink-light);
+      border-color: #e0a0b4
+    }
+
+    .fw-c {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 4px
+    }
+
+    .fw-1 .fw-c {
+      color: var(--deep)
+    }
+
+    .fw-2 .fw-c {
+      color: #7a4a9a
+    }
+
+    .fw-3 .fw-c {
+      color: #8a5a36
+    }
+
+    .fw-4 .fw-c {
+      color: #8a2040
+    }
+
+    .fw-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 6px
+    }
+
+    .fw-body {
+      font-size: 11px;
+      color: var(--text);
+      line-height: 1.6
+    }
+
+    /* TIMELINE */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 10px 0
+    }
+
+    .tl-row {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: .5px solid var(--border);
+      align-items: flex-start
+    }
+
+    .tl-row:last-child {
+      border: none;
+      padding-bottom: 0
+    }
+
+    .tl-date {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--dark);
+      min-width: 52px;
+      padding-top: 1px;
+      flex-shrink: 0
+    }
+
+    .tl-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pink);
+      flex-shrink: 0;
+      margin-top: 4px
+    }
+
+    .tl-content {}
+
+    .tl-title {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 3px
+    }
+
+    .tl-body {
+      font-size: 11px;
+      color: var(--text);
+      line-height: 1.6
+    }
+
+    .tl-highlight {
+      background: var(--pink-light);
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 9px;
+      font-weight: 600;
+      color: #8a2040;
+      display: inline-block;
+      margin-top: 4px
+    }
+
+    /* DATA EVIDENCE */
+    .data-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 9px;
+      margin: 10px 0
+    }
+
+    .data-card {
+      background: var(--offwhite);
+      border: .5px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px
+    }
+
+    .data-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 24px;
+      color: var(--deep);
+      line-height: 1;
+      margin-bottom: 4px
+    }
+
+    .data-num.pink {
+      color: #c0607a
+    }
+
+    .data-label {
+      font-size: 10px;
+      color: var(--text);
+      line-height: 1.45
+    }
+
+    .data-source {
+      font-size: 8px;
+      color: var(--muted);
+      margin-top: 4px
+    }
+
+    /* RESULTS GRID */
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 10px 0
+    }
+
+    .res-card {
+      background: var(--offwhite);
+      border-radius: 8px;
+      padding: 14px 16px
+    }
+
+    .res-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 24px;
+      color: var(--deep);
+      margin-bottom: 4px;
+      line-height: 1
+    }
+
+    .res-num.pink {
+      color: #c0607a
+    }
+
+    .res-label {
+      font-size: 10.5px;
+      color: var(--text);
+      line-height: 1.5
+    }
+
+    /* IMAGE INSERT */
+    .img-insert {
+      border-radius: 10px;
+      overflow: hidden;
+      border: .5px solid var(--border);
+      margin: 14px 0;
+      background: var(--offwhite);
+    }
+
+    .img-insert img {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    .img-caption {
+      padding: 10px 14px;
+      font-size: 10px;
+      color: var(--muted);
+      border-top: .5px solid var(--border);
+      line-height: 1.5;
+    }
+
+    /* PHOTO PLACEHOLDER — remove this entire block once you add real photos */
+    .img-placeholder {
+      width: 100%;
+      min-height: 200px;
+      background: linear-gradient(135deg, #f7d0dc, #e8c8f0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .img-placeholder-icon {
+      font-size: 24px
+    }
+
+    .img-placeholder-label {
+      font-size: 10px;
+      color: #8a2040;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase
+    }
+
+    .img-placeholder-sub {
+      font-size: 9px;
+      color: #c080a0;
+      text-align: center;
+      max-width: 200px;
+      line-height: 1.5
+    }
+
+    /* LINK CARDS */
+    .link-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 10px 0
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--offwhite);
+      border: .5px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      text-decoration: none;
+      transition: border-color .15s, background .15s;
+    }
+
+    .link-card:hover {
+      border-color: var(--steel);
+      background: var(--white)
+    }
+
+    .lc-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0
+    }
+
+    .lc-youtube {
+      background: #fff0f0
+    }
+
+    .lc-web {
+      background: #f0f4ff
+    }
+
+    .lc-music {
+      background: var(--pink-light)
+    }
+
+    .lc-title {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 2px
+    }
+
+    .lc-url {
+      font-size: 9.5px;
+      color: var(--muted)
+    }
+
+    .lc-arrow {
+      margin-left: auto;
+      font-size: 14px;
+      color: var(--muted)
+    }
+
+    /* PREDICTION SECTION */
+    .prediction {
+      background: var(--dark);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin: 10px 0;
+      position: relative;
+      overflow: hidden
+    }
+
+    .pred-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      pointer-events: none
+    }
+
+    .pred-label {
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 2
+    }
+
+    .pred-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+      position: relative;
+      z-index: 2
+    }
+
+    .pred-title em {
+      font-style: italic;
+      color: var(--pink)
+    }
+
+    .pred-body {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.7;
+      position: relative;
+      z-index: 2
+    }
+
+    /* STEPS */
+    .steps {
+      display: flex;
+      flex-direction: column
+    }
+
+    .step {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: .5px solid var(--border);
+      align-items: flex-start
+    }
+
+    .step:last-child {
+      border: none;
+      padding-bottom: 0
+    }
+
+    .step-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--pink-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #8a2040;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+      border: .5px solid var(--pink-mid)
+    }
+
+    .step-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 4px
+    }
+
+    .step-body {
+      font-size: 11.5px;
+      color: var(--text);
+      line-height: 1.68
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .scard {
+      border: .5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--white)
+    }
+
+    .sc-head {
+      padding: 10px 16px;
+      border-bottom: .5px solid var(--border);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--dark)
+    }
+
+    .sc-body {
+      padding: 10px 16px
+    }
+
+    .sc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 5px 0;
+      border-bottom: .5px solid var(--border);
+      gap: 8px
+    }
+
+    .sc-row:last-child {
+      border: none
+    }
+
+    .sc-key {
+      font-size: 10px;
+      color: var(--muted)
+    }
+
+    .sc-val {
+      font-size: 10px;
+      font-weight: 500;
+      text-align: right;
+      color: var(--dark)
+    }
+
+    .skill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 10px 16px
+    }
+
+    .skill {
+      font-size: 9px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--offwhite);
+      border: .5px solid var(--border);
+      color: var(--dark)
+    }
+
+    .soi {
+      padding: 4px 0;
+      border-bottom: .5px solid var(--border);
+      display: flex;
+      gap: 6px;
+      font-size: 10px;
+      color: var(--text);
+      line-height: 1.5
+    }
+
+    .soi:last-child {
+      border: none
+    }
+
+    /* FOOTER NAV */
+    .footer-nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px
+    }
+
+    .fn-btn {
+      flex: 1;
+      padding: 13px 0;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      transition: background .15s;
+      font-family: 'Bricolage Grotesque', sans-serif
+    }
+
+    .fn-back {
+      border: .5px solid var(--border);
+      color: var(--muted);
+      background: var(--white)
+    }
+
+    .fn-back:hover {
+      background: var(--offwhite)
+    }
+
+    .fn-next {
+      background: var(--dark);
+      color: #fff
+    }
+
+    .fn-next:hover {
+      background: #2d3f54
+    }
+
+    @media(max-width:768px) {
+      .stats-row {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .case-grid {
+        grid-template-columns: 1fr
+      }
+
+      .framework-grid,
+      .data-row,
+      .results-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .ch-title {
+        font-size: 24px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a class="nav-logo" href="/">Helena Lee</a>
+    <ul class="nav-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a class="nav-back" href="/social-brand.html">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+      Social Media &amp; Brand
+    </a>
+  </nav>
+
+  <main class="page" role="main">
+
+    <!-- CONTEXT BANNER -->
+    <aside class="context-banner" aria-label="Project context">
+      <div class="cb-icon">&#127925;</div>
+      <div>
+        <div class="cb-title">Independent analysis &mdash; Music industry passion project</div>
+        <div class="cb-body">Written independently to apply marketing strategy frameworks to K-pop, an industry I have
+          followed closely since childhood. This piece demonstrates cultural fluency, trend analysis, and the ability to
+          translate fandom knowledge into structured strategic thinking.</div>
+      </div>
+    </aside>
+
+    <!-- HEADER -->
+    <header class="case-header" aria-label="Case study header">
+      <div class="blob" style="width:280px;height:280px;background:#E8A0B4;top:-120px;right:-60px;opacity:.2"
+        aria-hidden="true"></div>
+      <div class="blob" style="width:200px;height:200px;background:#D4A8E0;bottom:-70px;left:20px;opacity:.18"
+        aria-hidden="true"></div>
+      <div class="blob" style="width:140px;height:140px;background:var(--warm);top:10px;left:200px;opacity:.15"
+        aria-hidden="true"></div>
+      <p class="ch-breadcrumb">Social Media &amp; Brand &mdash; Music Strategy</p>
+      <p class="ch-company">KiiiKiii &nbsp;&middot;&nbsp; 404 (New Era) &nbsp;&middot;&nbsp; Delulu Pack EP
+        &nbsp;&middot;&nbsp; 2025</p>
+      <h1 class="ch-title">How KiiiKiii turned a Y2K pivot<br>into a <em>chart-topping comeback</em></h1>
+      <p class="ch-tagline">A strategic breakdown of KiiiKiii's Delulu Pack era using the 4C Framework — Connection,
+        Concept, Countdown, and Conviction — plus a data-backed prediction for what their next era should look like and
+        why.</p>
+      <div class="ch-pills" role="list">
+        <span class="pill pill-pink" role="listitem">Music Strategy</span>
+        <span class="pill pill-pink" role="listitem">K-pop Analysis</span>
+        <span class="pill pill-purp" role="listitem">4C Framework</span>
+        <span class="pill pill-warm" role="listitem">Independent Research</span>
+        <span class="pill pill-cream" role="listitem">Trend Analysis</span>
+        <span class="pill pill-blue" role="listitem">Campaign Rollout</span>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="stats-row" aria-label="Campaign results">
+      <div class="stat">
+        <div class="stat-num pink">No. 2</div>
+        <div class="stat-label">Melon Top 100 chart</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num pink">#1</div>
+        <div class="stat-label">YouTube Music weekly chart Jan 30&ndash;Feb 5</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">21</div>
+        <div class="stat-label">Day promotional window</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">NME</div>
+        <div class="stat-label">Essential emerging artists 2026</div>
+      </div>
+    </section>
+
+    <!-- MAIN + SIDEBAR -->
+    <div class="case-grid">
+      <div>
+
+        <!-- 01 BACKGROUND -->
+        <article class="sec" aria-labelledby="s1">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">01</span>
+            <h2 class="sec-title" id="s1">Background &mdash; who is KiiiKiii?</h2><span class="sec-badge">Context</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">KiiiKiii debuted in 2025 with a soft, nature-inspired, girl-next-door concept. Their initial
+              positioning emphasized alternative pop influences, mellow aesthetics, and an approachable sound. In a
+              K-pop landscape dominated by Western-leaning maximalism, they carved out a quieter lane built on warmth
+              rather than spectacle.</p>
+            <p class="body">It worked to a point. Being rookies under a reputable label meant they had built
+              <strong>recognition without identity.</strong> Their second EP, Delulu Pack, marked a strategic pivot —
+              one that required a complete reinvention of visual language, sonic direction, and audience targeting while
+              keeping the core fanbase intact.
+            </p>
+
+            <!--
+        ═══════════════════════════════════════════════════════
+        PHOTO 1 — KiiiKiii debut vs Delulu Pack comparison image
+        ═══════════════════════════════════════════════════════
+
+        HOW TO ADD YOUR PHOTO:
+        1. Save your image file (e.g. kiikiii-debut-vs-delulu.jpg) in the same
+           folder as this HTML file.
+        2. Delete everything between the comments that say
+           "DELETE FROM HERE" and "TO HERE" below.
+        3. Replace it with:
+              <img src="kiikiii-debut-vs-delulu.jpg" alt="KiiiKiii debut era vs Delulu Pack visual comparison">
+        -->
+
+            <div class="img-insert" role="img" aria-label="KiiiKiii debut vs Delulu Pack visual">
+              <!-- DELETE FROM HERE -->
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">&#128248;</div>
+                <div class="img-placeholder-label">Photo: KiiiKiii debut vs Delulu Pack</div>
+                <div class="img-placeholder-sub">Side-by-side showing the visual pivot from cottagecore to Y2K</div>
+              </div>
+              <!-- TO HERE -->
+              <div class="img-caption">KiiiKiii's visual identity shift: soft debut aesthetic (left) vs. Y2K McBling
+                Delulu Pack era (right). The concept change is total &mdash; not just styling, but narrative, colour
+                language, and sonic world.</div>
+            </div>
+
+            <div class="hl"><strong>Why this pivot mattered strategically:</strong> Reinvention in K-pop is not just a
+              creative choice. It is a market decision. The question KiiiKiii's team had to answer was: how do you
+              expand an audience without alienating the one you already have? Their answer was to change the aesthetic
+              completely while keeping the emotional core intact &mdash; the group's name literally means the sound of
+              giggling together. The concept changed. The warmth did not.</div>
+          </div>
+        </article>
+
+        <!-- 02 4C FRAMEWORK -->
+        <article class="sec" aria-labelledby="s2">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">02</span>
+            <h2 class="sec-title" id="s2">The 4C Framework &mdash; my analytical lens</h2><span
+              class="sec-badge">Framework</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">Having closely observed multiple comeback cycles across generations of artists, I identified
+              four recurring strategic pillars that consistently drive awareness and fandom growth. I use these as an
+              analytical lens for understanding why certain campaigns work and others do not.</p>
+            <div class="framework-grid" role="list" aria-label="4C Framework">
+              <div class="fw-card fw-1" role="listitem">
+                <div class="fw-c">C1 &mdash; Connection</div>
+                <div class="fw-title">Audience Intelligence as Infrastructure</div>
+                <div class="fw-body">Fandom is not accidental &mdash; it is engineered through continuous behavioural
+                  observation and cultural alignment. Leading groups treat fans as active distribution partners, not
+                  passive consumers. Labels study what fans share, remix, translate, and replicate to refine future
+                  content for maximum participatory potential.</div>
+              </div>
+              <div class="fw-card fw-2" role="listitem">
+                <div class="fw-c">C2 &mdash; Concept</div>
+                <div class="fw-title">Identity Architecture and Era Differentiation</div>
+                <div class="fw-body">Concept in K-pop extends beyond music into a fully immersive identity system
+                  governing visual identity, sonic direction, choreography, and aesthetic cohesion for fashion and
+                  social media. Strong concept execution allows an audience to describe an era in 3 words.
+                  Distinctiveness is survival.</div>
+              </div>
+              <div class="fw-card fw-3" role="listitem">
+                <div class="fw-c">C3 &mdash; Countdown</div>
+                <div class="fw-title">Anticipation Engineering and Algorithmic Momentum</div>
+                <div class="fw-body">Promotional cycles compress time perception through structured countdown mechanics.
+                  Release day is positioned as a cultural event, not a passive content drop. This extends the
+                  promotional runway, maintains algorithmic visibility, and makes anticipation itself a shared social
+                  experience that fans track, discuss, and predict.</div>
+              </div>
+              <div class="fw-card fw-4" role="listitem">
+                <div class="fw-c">C4 &mdash; Conviction</div>
+                <div class="fw-title">Execution Discipline and Quality</div>
+                <div class="fw-body">Successful campaigns demonstrate unwavering commitment to creative direction. High
+                  production quality across visuals, choreography, and sound signals seriousness of brand intent. When
+                  combined with a clear aesthetic vision, this level of execution enables groups to transition from
+                  trend participants to trend owners.</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 CONNECTION -->
+        <article class="sec" aria-labelledby="s3">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">03</span>
+            <h2 class="sec-title" id="s3">Connection &mdash; reading the cultural data</h2><span
+              class="sec-badge">Audience intelligence</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">The Y2K trend had been building globally across fashion, music, and social media for years.
+              Fit-and-flare denim had been rising since 2020, and the conditions for a Y2K-anchored comeback were
+              visible in the data well before the campaign launched.</p>
+            <div class="evl">Cultural data that validated the pivot</div>
+            <div class="data-row" role="list" aria-label="Supporting data">
+              <div class="data-card" role="listitem">
+                <div class="data-num pink">44%</div>
+                <div class="data-label">Growth in nostalgic playlist engagement globally by mid-2025</div>
+                <div class="data-source">Source: Streaming platform trend data</div>
+              </div>
+              <div class="data-card" role="listitem">
+                <div class="data-num pink">480M</div>
+                <div class="data-label">TikTok engagements around era-comparison and Y2K throwback content</div>
+                <div class="data-source">Source: TikTok trend analysis</div>
+              </div>
+              <div class="data-card" role="listitem">
+                <div class="data-num pink">+4%</div>
+                <div class="data-label">Projected growth in flared denim for Summer 2026, Heuritech fashion trend data
+                </div>
+                <div class="data-source">Source: Heuritech</div>
+              </div>
+            </div>
+            <div class="hl hl-pink"><strong>The strategic insight:</strong> KiiiKiii's core audience &mdash; younger Gen
+              Z and early Millennial listeners drawn to soft, alternative pop &mdash; remained the foundation. Delulu
+              Pack was engineered to expand outward by attaching to a cultural moment that was already moving. The UK
+              house/garage production gave the track crossover credibility in Western music spaces that a purely K-pop
+              sound would not have had.</div>
+          </div>
+        </article>
+
+        <!-- 04 CONCEPT -->
+        <article class="sec" aria-labelledby="s4">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">04</span>
+            <h2 class="sec-title" id="s4">Concept &mdash; Y2K as a total identity system</h2><span
+              class="sec-badge">Brand architecture</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">404 (New Era) introduced a UK house/garage-influenced sound paired with a bold Y2K and
+              McBling-inspired visual identity. The core narrative centred on reinvention and breaking societal
+              expectations, reframing "404" not as an error, but as an intentional system disruption. The message: chase
+              your dream, break the status quo, carve your own path.</p>
+            <p class="body">Rather than subtly incorporating the Y2K trend, KiiiKiii <strong>fully embodied it</strong>
+              &mdash; metallic textures, futuristic styling, hyper-pink palettes, and dreamcore visuals. They leveraged
+              2010-era nostalgia objects filtered through a modern, high-energy lens. Wii games. Gumball machines.
+              Objects familiar enough to trigger memory, unfamiliar enough to feel new in the context.</p>
+
+            <!--
+        ═══════════════════════════════════════════════════════
+        PHOTO 2 — 404 (New Era) concept visuals / promo photos
+        ═══════════════════════════════════════════════════════
+
+        HOW TO ADD YOUR PHOTO:
+        1. Save your image file (e.g. kiikiii-404-concept.jpg) in the
+           same folder as this HTML file.
+        2. Delete everything between the comments below
+           that say "DELETE FROM HERE" and "TO HERE".
+        3. Replace with:
+              <img src="kiikiii-404-concept.jpg" alt="KiiiKiii 404 New Era concept visuals">
+        -->
+
+            <div class="img-insert" role="img" aria-label="404 concept visuals">
+              <!-- DELETE FROM HERE -->
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">&#10024;</div>
+                <div class="img-placeholder-label">Photo: 404 (New Era) concept visuals</div>
+                <div class="img-placeholder-sub">Official promo photos or MV stills showing the Y2K McBling aesthetic
+                </div>
+              </div>
+              <!-- TO HERE -->
+              <div class="img-caption">404 (New Era) visual identity: metallic textures, hyper-pink palette, McBling
+                styling, and dreamcore MV direction. Each visual element reinforced the "system disruption" narrative.
+              </div>
+            </div>
+
+            <div class="hl hl-purp"><strong>Concept as competitive moat:</strong> Strong concept execution means an
+              audience can describe an era in 3 words. For Delulu Pack: bold, Y2K, electric. The concept was not a
+              styling choice &mdash; it was a complete identity architecture that governed music direction,
+              choreography, MV narrative, fashion, and social media language simultaneously.</div>
+          </div>
+        </article>
+
+        <!-- 05 COUNTDOWN -->
+        <article class="sec" aria-labelledby="s5">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">05</span>
+            <h2 class="sec-title" id="s5">Countdown &mdash; a 21-day rollout dissected</h2><span
+              class="sec-badge">Campaign architecture</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">The Delulu Pack pre-album release rollout ran from January 5th to January 26th &mdash; a
+              tight 21-day window packed with intentional, escalating content. Each drop served a distinct purpose. By
+              the time the MV launched, the audience was not discovering the song. They were reuniting with it.</p>
+
+            <div class="evl">Drop-by-drop breakdown</div>
+            <div class="timeline" role="list" aria-label="Rollout timeline">
+              <div class="tl-row" role="listitem">
+                <div class="tl-date">Jan 5</div>
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-content">
+                  <div class="tl-title">Campaign begins &mdash; EP announcement</div>
+                  <div class="tl-body">First announcement of the Delulu Pack EP. Establishes the campaign territory
+                    without revealing the concept. Creates a holding pattern where fans are aware something is coming
+                    but do not yet know what.</div>
+                  <span class="tl-highlight">Purpose: Awareness trigger</span>
+                </div>
+              </div>
+              <div class="tl-row" role="listitem">
+                <div class="tl-date">Jan 12</div>
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-content">
+                  <div class="tl-title">Track film released</div>
+                  <div class="tl-body">First track film establishes the Y2K sonic world and generates attention from
+                    both existing fans and casual listeners. This seeded the sound for the title track well before the
+                    full release, turning first-time encounters into second and third listens before the MV even
+                    dropped.</div>
+                  <span class="tl-highlight">Purpose: Sonic pre-priming</span>
+                </div>
+              </div>
+              <div class="tl-row" role="listitem">
+                <div class="tl-date">Jan 16</div>
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-content">
+                  <div class="tl-title">All 12 countdown photos drop simultaneously</div>
+                  <div class="tl-body">A visual flood designed to saturate feeds and trigger curiosity. Viewers
+                    encounter familiar childhood objects (Wii games, gumball machines) recontextualized in KiiiKiii's
+                    aesthetic, creating an instant nostalgia hook that made the content highly shareable and
+                    discussion-generating.</div>
+                  <span class="tl-highlight">Purpose: Feed saturation + nostalgia hook</span>
+                </div>
+              </div>
+              <div class="tl-row" role="listitem">
+                <div class="tl-date">Jan 18</div>
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-content">
+                  <div class="tl-title">EP highlight medley released</div>
+                  <div class="tl-body">First taste of the full album, building pre-save momentum. This was a conversion
+                    mechanism &mdash; it moved curious onlookers into pre-committed fans who now had a specific release
+                    date marked on their calendars and a reason to care about the full album, not just the title track.
+                  </div>
+                  <span class="tl-highlight">Purpose: Audience conversion</span>
+                </div>
+              </div>
+              <div class="tl-row" role="listitem">
+                <div class="tl-date">Jan 22&ndash;23</div>
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-content">
+                  <div class="tl-title">MV stills and teaser released</div>
+                  <div class="tl-body">Audiences see the fashion, choreography aesthetic, and visual tone before the
+                    full video. This let fans form an emotional relationship with the visuals before the music arrived
+                    &mdash; meaning the MV drop was a reunion, not a first meeting.</div>
+                  <span class="tl-highlight">Purpose: Visual familiarity before release</span>
+                </div>
+              </div>
+              <div class="tl-row" role="listitem">
+                <div class="tl-date">Jan 26</div>
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-content">
+                  <div class="tl-title">Delulu Pack and 404 (New Era) officially released</div>
+                  <div class="tl-body">Release day had been transformed from a content drop into a cultural event. The
+                    audience was not discovering anything &mdash; they were completing a journey they had already begun
+                    21 days earlier.</div>
+                  <span class="tl-highlight">Purpose: Culmination, not launch</span>
+                </div>
+              </div>
+            </div>
+
+            <!--
+        ═══════════════════════════════════════════════════════
+        PHOTO 3 — The Jan 16 countdown photo grid (the collage
+                  of Y2K objects from your PDF page 4)
+        ═══════════════════════════════════════════════════════
+
+        HOW TO ADD YOUR PHOTO:
+        1. Screenshot or save the countdown photo collage image
+           (the pink grid of Y2K objects from the document)
+           as e.g. kiikiii-countdown-photos.jpg
+        2. Delete everything between "DELETE FROM HERE" and
+           "TO HERE" below.
+        3. Replace with:
+              <img src="kiikiii-countdown-photos.jpg" alt="KiiiKiii 404 countdown photos - Y2K nostalgia objects">
+        -->
+
+            <div class="img-insert" role="img" aria-label="Jan 16 countdown photos">
+              <!-- DELETE FROM HERE -->
+              <div class="img-placeholder">
+                <div class="img-placeholder-icon">&#128444;</div>
+                <div class="img-placeholder-label">Photo: Jan 16 countdown grid</div>
+                <div class="img-placeholder-sub">The 12 simultaneous Y2K object photos (Wii games, gumball machines,
+                  etc.) from the rollout</div>
+              </div>
+              <!-- TO HERE -->
+              <div class="img-caption">Jan 16: All 12 Y2K-styled countdown photos dropped simultaneously &mdash; a
+                visual flood strategy that saturated feeds and created an immediate nostalgia hook through
+                recontextualized childhood objects.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06 RESULTS -->
+        <article class="sec" aria-labelledby="s6">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">06</span>
+            <h2 class="sec-title" id="s6">Conviction &mdash; what flawless execution delivered</h2><span
+              class="sec-badge">Results</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">What made Delulu Pack impressive was not any single element in isolation. It was how
+              completely integrated fashion, choreography, and sound were. Everything matched the concept. The 4C
+              framework aligned: audience intelligence informed the pivot, the concept delivered a total identity
+              system, the countdown engineered anticipation, and the execution quality validated the ambition.</p>
+            <div class="results-grid" role="list" aria-label="Campaign results">
+              <div class="res-card" role="listitem">
+                <div class="res-num pink">No. 2</div>
+                <div class="res-label">Melon Top 100 chart &mdash; one of South Korea's most competitive streaming
+                  platforms</div>
+              </div>
+              <div class="res-card" role="listitem">
+                <div class="res-num pink">#1</div>
+                <div class="res-label">YouTube Music weekly chart during Jan 30&ndash;Feb 5, topped Bugs weekly rankings
+                </div>
+              </div>
+              <div class="res-card" role="listitem">
+                <div class="res-num">Global</div>
+                <div class="res-label">Entered both Billboard Japan listings and Chinese charts &mdash; cross-market
+                  penetration</div>
+              </div>
+              <div class="res-card" role="listitem">
+                <div class="res-num">NME</div>
+                <div class="res-label">Selected among essential emerging artists for 2026 by the UK publication</div>
+              </div>
+            </div>
+
+            <div class="evl" style="margin-top:16px">Key links</div>
+            <div class="link-row" role="list" aria-label="Referenced content">
+              <a class="link-card" href="https://www.youtube.com/results?search_query=kiikiii+404+new+era+mv"
+                target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Watch 404 New Era MV on YouTube">
+                <div class="lc-icon lc-youtube" aria-hidden="true">&#9654;</div>
+                <div>
+                  <div class="lc-title">404 (New Era) &mdash; Official MV</div>
+                  <div class="lc-url">youtube.com &mdash; search KiiiKiii 404 New Era</div>
+                </div>
+                <span class="lc-arrow" aria-hidden="true">&#8599;</span>
+              </a>
+              <a class="link-card" href="https://www.youtube.com/results?search_query=kiikiii+delulu+pack+track+film"
+                target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Watch Delulu Pack track film">
+                <div class="lc-icon lc-youtube" aria-hidden="true">&#9654;</div>
+                <div>
+                  <div class="lc-title">Delulu Pack &mdash; Track Film</div>
+                  <div class="lc-url">youtube.com &mdash; search KiiiKiii Delulu Pack track film</div>
+                </div>
+                <span class="lc-arrow" aria-hidden="true">&#8599;</span>
+              </a>
+              <a class="link-card" href="https://www.nme.com" target="_blank" rel="noopener noreferrer" role="listitem"
+                aria-label="NME feature on KiiiKiii">
+                <div class="lc-icon lc-web" aria-hidden="true">&#128240;</div>
+                <div>
+                  <div class="lc-title">NME &mdash; KiiiKiii: Essential Emerging Artists 2026</div>
+                  <div class="lc-url">nme.com &mdash; search KiiiKiii 2026</div>
+                </div>
+                <span class="lc-arrow" aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 07 PREDICTION -->
+        <article class="sec" aria-labelledby="s7">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">07</span>
+            <h2 class="sec-title" id="s7">My prediction &mdash; what comes next and why</h2><span
+              class="sec-badge">Strategic thinking</span>
+          </div>
+          <div class="sec-body">
+            <div class="prediction" aria-label="Prediction thesis">
+              <div class="pred-blob"
+                style="width:160px;height:160px;background:#E8A0B4;top:-60px;right:-40px;opacity:.2" aria-hidden="true">
+              </div>
+              <p class="pred-label">My thesis for KiiiKiii's next era</p>
+              <h3 class="pred-title">A summer comeback rooted in youth, friendship, and <em>layered pop</em> &mdash;
+                warm and fast-fashion on the surface, sonically sophisticated underneath.</h3>
+              <p class="pred-body">House-pop or electronic R&amp;B with a tropical hook. Light electronic percussion,
+                airy vocal harmonics, a chorus built for car rides and convenience store runs. A youth anthem built
+                around collective joy &mdash; friends, not romance. Chaos, not heartbreak.</p>
+            </div>
+
+            <div class="evl">The commercial and strategic case</div>
+
+            <div class="steps" role="list" aria-label="Prediction reasoning">
+              <div class="step" role="listitem">
+                <div class="step-dot">1</div>
+                <div>
+                  <div class="step-title">The timing is already supported by their history</div>
+                  <div class="step-body">KiiiKiii was already on The Korea Times' August 2025 comeback schedule, meaning
+                    a summer release pattern is part of their history, not speculation. Starship has shown they move the
+                    group consistently, and a mid-2026 comeback lands six months after Delulu Pack &mdash; a natural
+                    window that maintains momentum without oversaturation.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot">2</div>
+                <div>
+                  <div class="step-title">Brand partnerships are already pointing summer</div>
+                  <div class="step-body">In January 2026, KiiiKiii was selected by Japanese lifestyle store WEGO as
+                    their promotional model for the 2026 Spring season. In February, they collaborated with New Era on
+                    their 2026 S/S collection. The group is already being positioned by brands as a spring/summer face.
+                    A comeback that leans into that alignment is cohesive brand storytelling, not a forced pivot.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot">3</div>
+                <div>
+                  <div class="step-title">There is a specific gap in the market they can fill</div>
+                  <div class="step-body">NewJeans proved with How Sweet that a summer K-pop track can be breezy and
+                    sonically intentional at the same time. But How Sweet was ultimately a breakup track &mdash;
+                    individual emotional core. What the summer girl group space is missing is a youth anthem built
+                    around collective joy. ILLIT's Do the Dance gestured toward it but critics noted the production
+                    didn't push far enough sonically. KiiiKiii &mdash; who proved they can execute a complex sonic
+                    concept with 404 &mdash; is positioned to do what ILLIT gestured toward but with more musical depth.
+                  </div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot">4</div>
+                <div>
+                  <div class="step-title">The concept is authentic to who they are</div>
+                  <div class="step-body">KiiiKiii's name comes from the Korean onomatopoeia for giggling &mdash; they
+                    were built around joy, lightness, and positive energy from the beginning. A friendship-forward
+                    summer comeback is not a detour from their identity. It is the most authentic expression of it they
+                    have not made yet. In an industry where authenticity is the rarest currency, that matters more than
+                    any trend report.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hl hl-pink" style="margin-top:16px"><strong>The rollout I'd build:</strong> A "summer trip"
+              content series seeded on TikTok in the weeks before announcement &mdash; candid, travel-coded, Y2K-styled
+              &mdash; primes the algorithm and builds aesthetic context before the music arrives. A limited
+              travel-themed merch drop tied to the announcement drives pre-save momentum. Regional push priority: Japan
+              and Southeast Asia, where KiiiKiii's Y2K aesthetic has the strongest demonstrated cultural traction.</div>
+          </div>
+        </article>
+
+        <!-- 08 LEARNINGS -->
+        <article class="sec" aria-labelledby="s8">
+          <div class="sec-head"><span class="sec-num" aria-hidden="true">08</span>
+            <h2 class="sec-title" id="s8">What this analysis taught me</h2><span class="sec-badge">Reflection</span>
+          </div>
+          <div class="sec-body">
+            <div class="steps" role="list">
+              <div class="step" role="listitem">
+                <div class="step-dot">1</div>
+                <div>
+                  <div class="step-title">Fandom is infrastructure, not audience</div>
+                  <div class="step-body">The most important thing K-pop marketing gets right that most industries do not
+                    is treating fans as active distribution partners. They do not just consume content &mdash; they
+                    translate it, remix it, spread it, and make it searchable. Any brand that learns to design for that
+                    behaviour rather than around it has a structural advantage.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot">2</div>
+                <div>
+                  <div class="step-title">A rollout is a story, not a schedule</div>
+                  <div class="step-body">The Delulu Pack campaign worked because each drop had a narrative purpose.
+                    Track film seeded the sound. Countdown photos created the nostalgia hook. The medley converted
+                    curiosity into commitment. The MV was a reunion, not a reveal. Most campaigns treat release day as
+                    the starting point. The best ones treat it as the ending.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot">3</div>
+                <div>
+                  <div class="step-title">The best marketing insight is cultural, not just statistical</div>
+                  <div class="step-body">The 44% growth in nostalgic playlist engagement and the Heuritech flared denim
+                    data mattered. But what made the pivot legible was the deeper cultural observation: Gen Z is not
+                    nostalgic for the 2000s because they lived through it. They are nostalgic for a version of it they
+                    only encountered through the internet. That distinction changes how you execute the concept
+                    entirely.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside aria-label="Project details">
+        <div class="sidebar">
+
+          <div class="scard">
+            <div class="sc-head">Project details</div>
+            <div class="sc-body">
+              <div class="sc-row"><span class="sc-key">Subject</span><span class="sc-val">KiiiKiii &mdash; 404 (New
+                  Era)</span></div>
+              <div class="sc-row"><span class="sc-key">EP</span><span class="sc-val">Delulu Pack (2025)</span></div>
+              <div class="sc-row"><span class="sc-key">Label</span><span class="sc-val">Starship Entertainment</span>
+              </div>
+              <div class="sc-row"><span class="sc-key">Type</span><span class="sc-val">Independent analysis</span></div>
+              <div class="sc-row"><span class="sc-key">Framework</span><span class="sc-val">4C Framework
+                  (original)</span></div>
+              <div class="sc-row"><span class="sc-key">Rollout window</span><span class="sc-val">21 days (Jan
+                  5&ndash;26)</span></div>
+            </div>
+          </div>
+
+          <div class="scard">
+            <div class="sc-head">Campaign results</div>
+            <div class="sc-body">
+              <div class="sc-row"><span class="sc-key">Melon chart</span><span class="sc-val" style="color:#c0607a">No.
+                  2</span></div>
+              <div class="sc-row"><span class="sc-key">YouTube Music</span><span class="sc-val" style="color:#c0607a">#1
+                  weekly</span></div>
+              <div class="sc-row"><span class="sc-key">Bugs</span><span class="sc-val">Weekly #1</span></div>
+              <div class="sc-row"><span class="sc-key">International</span><span class="sc-val">Billboard JP + CN
+                  charts</span></div>
+              <div class="sc-row"><span class="sc-key">Press</span><span class="sc-val">NME 2026 list</span></div>
+            </div>
+          </div>
+
+          <div class="scard">
+            <div class="sc-head">What makes this stand out</div>
+            <div class="sc-body">
+              <div class="soi"><span style="color:var(--warm)">&#10022;</span><span>Original 4C framework developed from
+                  observation</span></div>
+              <div class="soi"><span style="color:var(--warm)">&#10022;</span><span>Real data cited (Heuritech, TikTok
+                  trends)</span></div>
+              <div class="soi"><span style="color:var(--warm)">&#10022;</span><span>Drop-by-drop rollout
+                  dissection</span></div>
+              <div class="soi"><span style="color:var(--warm)">&#10022;</span><span>Prediction backed by commercial
+                  reasoning</span></div>
+              <div class="soi"><span style="color:var(--warm)">&#10022;</span><span>Gap analysis vs. NewJeans and
+                  ILLIT</span></div>
+            </div>
+          </div>
+
+          <div class="scard">
+            <div class="sc-head">Skills demonstrated</div>
+            <div class="skill-wrap" role="list">
+              <span class="skill">Framework development</span>
+              <span class="skill">Cultural trend analysis</span>
+              <span class="skill">Campaign dissection</span>
+              <span class="skill">Audience intelligence</span>
+              <span class="skill">Competitive analysis</span>
+              <span class="skill">Rollout strategy</span>
+              <span class="skill">Brand architecture</span>
+              <span class="skill">Music industry</span>
+              <span class="skill">Prediction modelling</span>
+              <span class="skill">K-pop market knowledge</span>
+            </div>
+          </div>
+
+          <div class="scard">
+            <div class="sc-head">Read the full document</div>
+            <div class="sc-body">
+              <!--
+          ═══════════════════════════════════════════════════
+          PDF DOWNLOAD LINK
+          ═══════════════════════════════════════════════════
+
+          HOW TO ADD THE PDF:
+          1. Save your PDF as "music-strategy.pdf" in the same
+             folder as this HTML file.
+          2. The link below already points to it &mdash; just
+             delete this comment block and the placeholder text,
+             and the button will work automatically.
+          -->
+              <a href="music-strategy.pdf"
+                style="display:block;background:var(--dark);color:#fff;text-align:center;padding:10px 14px;border-radius:6px;font-size:11px;font-weight:500;text-decoration:none;letter-spacing:.03em;transition:background .15s"
+                onmouseover="this.style.background='#2d3f54'" onmouseout="this.style.background='var(--dark)'" download>
+                Download full analysis (PDF)
+              </a>
+              <p style="font-size:9px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.5">Save your PDF
+                as <code
+                  style="background:var(--offwhite);padding:1px 4px;border-radius:3px;font-size:8px">music-strategy.pdf</code>
+                in the same folder as this file</p>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <nav class="footer-nav" aria-label="Case study navigation">
+      <a class="fn-btn fn-back" href="/social-brand.html">&#8592; Social Media &amp; Brand</a>
+      <a class="fn-btn fn-next" href="/#contact">Open to opportunities &#8594;</a>
+    </nav>
+
+  </main>
+</body>
+
+</html>
