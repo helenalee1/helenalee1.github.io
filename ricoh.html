@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      color: var(--color-text-primary);
+      background: transparent
+    }
+
+    :root {
+      --sky: #C8DCF0;
+      --steel: #7AADD4;
+      --deep: #4A7FA5;
+      --cream: #E8E0D0;
+      --warm: #C9956A;
+      --dark: #1C2B3A;
+      --offwhite: #F4F1ED;
+      --muted: #6B7F8E;
+    }
+
+    .root {
+      padding: 0 0 2.5rem
+    }
+
+    .case-header {
+      background: var(--dark);
+      border-radius: 14px;
+      padding: 30px 26px 26px;
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(55px);
+      opacity: .22
+    }
+
+    .breadcrumb {
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2
+    }
+
+    .company-line {
+      font-size: 10px;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .35);
+      margin-bottom: 7px;
+      position: relative;
+      z-index: 2
+    }
+
+    .case-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 28px;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 9px;
+      position: relative;
+      z-index: 2
+    }
+
+    .case-title em {
+      font-style: italic;
+      color: var(--sky)
+    }
+
+    .case-tagline {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .52);
+      line-height: 1.65;
+      max-width: 480px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 18px
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2
+    }
+
+    .mpill {
+      font-size: 9px;
+      padding: 4px 11px;
+      border-radius: 20px;
+      border: 1px solid;
+      letter-spacing: .06em
+    }
+
+    .p-blue {
+      background: rgba(200, 220, 240, .11);
+      border-color: rgba(200, 220, 240, .28);
+      color: var(--sky)
+    }
+
+    .p-warm {
+      background: rgba(201, 149, 106, .11);
+      border-color: rgba(201, 149, 106, .32);
+      color: #e8b88a
+    }
+
+    .p-cream {
+      background: rgba(232, 224, 208, .09);
+      border-color: rgba(232, 224, 208, .22);
+      color: #d0c8b5
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 1.25rem
+    }
+
+    .stat {
+      background: var(--color-background-secondary);
+      border: .5px solid var(--color-border-tertiary);
+      border-radius: 10px;
+      padding: 13px 10px;
+      text-align: center
+    }
+
+    .stat-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 26px;
+      color: var(--deep);
+      line-height: 1;
+      margin-bottom: 4px
+    }
+
+    .stat-label {
+      font-size: 9px;
+      color: var(--color-text-tertiary);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      line-height: 1.45
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      gap: 14px;
+      margin-bottom: 14px
+    }
+
+    .sec {
+      border: .5px solid var(--color-border-tertiary);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-background-primary);
+      margin-bottom: 12px
+    }
+
+    .sec:last-child {
+      margin-bottom: 0
+    }
+
+    .sec-head {
+      padding: 12px 17px 10px;
+      border-bottom: .5px solid var(--color-border-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .sec-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 19px;
+      color: var(--steel)
+    }
+
+    .sec-title {
+      font-size: 12px;
+      font-weight: 500
+    }
+
+    .sec-label {
+      font-size: 9px;
+      color: var(--color-text-tertiary);
+      margin-left: auto;
+      letter-spacing: .07em;
+      text-transform: uppercase
+    }
+
+    .sec-body {
+      padding: 15px 17px
+    }
+
+    p.body {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 11px
+    }
+
+    p.body:last-child {
+      margin-bottom: 0
+    }
+
+    p.body strong {
+      color: var(--color-text-primary);
+      font-weight: 500
+    }
+
+    .pull-quote {
+      font-family: 'Instrument Serif', serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--color-text-primary);
+      border-left: 2px solid var(--warm);
+      padding-left: 13px;
+      margin: 12px 0;
+      line-height: 1.55
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0
+    }
+
+    .step {
+      display: flex;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: .5px solid var(--color-border-tertiary);
+      align-items: flex-start
+    }
+
+    .step:last-child {
+      border: none;
+      padding-bottom: 0
+    }
+
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--sky);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: var(--deep);
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .step-title {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: 3px
+    }
+
+    .step-body {
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      line-height: 1.65
+    }
+
+    /* BEFORE/AFTER */
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 12px 0
+    }
+
+    .ba-card {
+      border-radius: 8px;
+      padding: 12px 14px
+    }
+
+    .ba-before {
+      background: #fef3ee;
+      border: .5px solid #e8c8b4
+    }
+
+    .ba-after {
+      background: #edf4f9;
+      border: .5px solid #b4cfe8
+    }
+
+    .ba-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 8px
+    }
+
+    .ba-label.before {
+      color: #a0603a
+    }
+
+    .ba-label.after {
+      color: var(--deep)
+    }
+
+    .ba-item {
+      font-size: 10px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+      padding: 3px 0;
+      border-bottom: .5px solid rgba(0, 0, 0, .06);
+      display: flex;
+      gap: 6px;
+      align-items: flex-start
+    }
+
+    .ba-item:last-child {
+      border: none
+    }
+
+    .ba-icon {
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px
+    }
+
+    .tags {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 10px
+    }
+
+    .tag {
+      font-size: 9px;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-weight: 500
+    }
+
+    .t-sky {
+      background: var(--sky);
+      color: var(--deep)
+    }
+
+    .t-warm {
+      background: #f3e8df;
+      color: #8a5a36
+    }
+
+    .t-dark {
+      background: var(--color-background-secondary);
+      color: var(--color-text-primary);
+      border: .5px solid var(--color-border-tertiary)
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 4px
+    }
+
+    .impact-block {
+      background: var(--color-background-secondary);
+      border-radius: 8px;
+      padding: 11px 13px
+    }
+
+    .ib-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 22px;
+      color: var(--deep);
+      margin-bottom: 3px;
+      line-height: 1
+    }
+
+    .ib-label {
+      font-size: 10px;
+      color: var(--color-text-secondary);
+      line-height: 1.45
+    }
+
+    .highlight {
+      background: var(--color-background-secondary);
+      border-radius: 8px;
+      border-left: 2px solid var(--steel);
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 11px;
+      color: var(--color-text-secondary);
+      line-height: 1.65
+    }
+
+    .highlight strong {
+      color: var(--color-text-primary);
+      font-weight: 500
+    }
+
+    .viz-slot {
+      border: .5px dashed var(--color-border-secondary);
+      border-radius: 8px;
+      padding: 13px 14px;
+      background: var(--color-background-secondary);
+      margin: 12px 0;
+      text-align: center
+    }
+
+    .vz-title {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      margin-bottom: 3px
+    }
+
+    .vz-sub {
+      font-size: 9px;
+      color: var(--color-text-tertiary)
+    }
+
+    /* WORKFLOW DIAGRAM */
+    .workflow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 12px 0;
+      overflow-x: auto;
+      padding-bottom: 4px
+    }
+
+    .wf-node {
+      background: var(--color-background-secondary);
+      border: .5px solid var(--color-border-tertiary);
+      border-radius: 8px;
+      padding: 9px 11px;
+      text-align: center;
+      flex-shrink: 0;
+      min-width: 80px
+    }
+
+    .wf-node-title {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      margin-bottom: 2px
+    }
+
+    .wf-node-sub {
+      font-size: 8px;
+      color: var(--color-text-tertiary)
+    }
+
+    .wf-arrow {
+      font-size: 14px;
+      color: var(--steel);
+      padding: 0 6px;
+      flex-shrink: 0
+    }
+
+    .wf-node.highlight-node {
+      background: var(--sky);
+      border-color: var(--steel)
+    }
+
+    .wf-node.highlight-node .wf-node-title {
+      color: var(--dark)
+    }
+
+    .wf-node.highlight-node .wf-node-sub {
+      color: var(--deep)
+    }
+
+    /* SIDEBAR */
+    .scard {
+      border: .5px solid var(--color-border-tertiary);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-background-primary);
+      margin-bottom: 10px
+    }
+
+    .scard:last-child {
+      margin-bottom: 0
+    }
+
+    .sc-head {
+      padding: 10px 14px;
+      border-bottom: .5px solid var(--color-border-tertiary);
+      font-size: 11px;
+      font-weight: 500
+    }
+
+    .sc-body {
+      padding: 10px 14px
+    }
+
+    .sc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 5px 0;
+      border-bottom: .5px solid var(--color-border-tertiary);
+      gap: 8px
+    }
+
+    .sc-row:last-child {
+      border: none
+    }
+
+    .sc-key {
+      font-size: 10px;
+      color: var(--color-text-tertiary)
+    }
+
+    .sc-val {
+      font-size: 10px;
+      font-weight: 500;
+      text-align: right;
+      color: var(--color-text-primary)
+    }
+
+    .skill-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 10px 14px
+    }
+
+    .skill {
+      font-size: 9px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--color-background-secondary);
+      border: .5px solid var(--color-border-tertiary);
+      color: var(--color-text-primary)
+    }
+
+    .ind-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: .5px solid var(--color-border-tertiary);
+      align-items: center;
+      gap: 6px
+    }
+
+    .ind-row:last-child {
+      border: none
+    }
+
+    .ind-name {
+      font-size: 10px;
+      color: var(--color-text-secondary);
+      white-space: nowrap
+    }
+
+    .ind-bar-wrap {
+      flex: 1;
+      height: 5px;
+      background: var(--color-background-secondary);
+      border-radius: 3px;
+      overflow: hidden
+    }
+
+    .ind-bar {
+      height: 100%;
+      border-radius: 3px
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 2px
+    }
+
+    .fn-btn {
+      flex: 1;
+      padding: 11px 0;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      text-align: center;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      cursor: pointer;
+      border: none
+    }
+
+    .fn-back {
+      border: .5px solid var(--color-border-tertiary) !important;
+      color: var(--color-text-secondary);
+      background: var(--color-background-primary)
+    }
+
+    .fn-next {
+      background: var(--dark);
+      color: #fff
+    }
+
+    @media(max-width:640px) {
+      .stats-row {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .case-grid {
+        grid-template-columns: 1fr
+      }
+
+      .impact-grid {
+        grid-template-columns: 1fr
+      }
+
+      .ba-grid {
+        grid-template-columns: 1fr
+      }
+
+      .case-title {
+        font-size: 22px
+      }
+
+      .workflow {
+        flex-wrap: wrap;
+        gap: 6px
+      }
+
+      .wf-arrow {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="root" role="main">
+
+    <!-- HEADER -->
+    <header class="case-header" aria-label="Case study header">
+      <div class="blob" style="width:280px;height:280px;background:#C9956A;top:-120px;right:-60px" aria-hidden="true">
+      </div>
+      <div class="blob" style="width:200px;height:200px;background:#4A7FA5;bottom:-80px;left:20px" aria-hidden="true">
+      </div>
+
+      <p class="breadcrumb">Portfolio — Social Media &amp; Brand</p>
+      <p class="company-line">Ricoh Canada &nbsp;·&nbsp; Marketing Specialist Intern</p>
+      <h1 class="case-title">Activating an <em>untapped channel</em> —<br>Ricoh's employee advocacy program</h1>
+      <p class="case-tagline">Built Ricoh Canada's employee advocacy program from scratch on GaggleAMP — designing the
+        content system, onboarding flow, and platform architecture that took the channel from dormant to driving a 1.5×
+        lift in LinkedIn presence across 70+ employees.</p>
+      <div class="meta-row" role="list" aria-label="Project tags">
+        <span class="mpill p-blue" role="listitem">Social Media Strategy</span>
+        <span class="mpill p-blue" role="listitem">Sales Enablement</span>
+        <span class="mpill p-blue" role="listitem">Platform Architecture</span>
+        <span class="mpill p-warm" role="listitem">Internship</span>
+        <span class="mpill p-cream" role="listitem">Cross-functional</span>
+        <span class="mpill p-cream" role="listitem">GaggleAMP</span>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section aria-label="Key metrics" class="stats-row">
+      <div class="stat">
+        <div class="stat-num" aria-label="1.5 times">1.5×</div>
+        <div class="stat-label">LinkedIn presence lift in 2 months</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">70+</div>
+        <div class="stat-label">Employees onboarded across Canada</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0→1</div>
+        <div class="stat-label">Platform built from scratch</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Teams connected via shared workflow</div>
+      </div>
+    </section>
+
+    <!-- MAIN + SIDEBAR -->
+    <div class="case-grid">
+      <div>
+
+        <!-- 01 THE PROBLEM -->
+        <article class="sec" aria-labelledby="s1">
+          <div class="sec-head">
+            <span class="sec-num" aria-hidden="true">01</span>
+            <h2 class="sec-title" id="s1">The problem</h2>
+            <span class="sec-label">Context</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">Ricoh Canada had already invested in GaggleAMP — an employee advocacy platform designed to
+              help sales teams extend the company's reach on LinkedIn through their personal networks. The problem was
+              that nobody was really using it.</p>
+            <p class="body">There was <strong>no content system, no onboarding process</strong>, and no clear way for
+              account executives or product marketing managers to know what to share or when. The platform existed, the
+              licence was paid for, and it was sitting completely dormant.</p>
+
+            <div class="ba-grid" role="list" aria-label="Before and after comparison">
+              <div class="ba-card ba-before" role="listitem">
+                <div class="ba-label before">Before</div>
+                <div class="ba-item"><span class="ba-icon">✗</span>No content system or calendar</div>
+                <div class="ba-item"><span class="ba-icon">✗</span>No onboarding for new users</div>
+                <div class="ba-item"><span class="ba-icon">✗</span>Platform architecture disorganized</div>
+                <div class="ba-item"><span class="ba-icon">✗</span>AEs unsure what to share or when</div>
+                <div class="ba-item"><span class="ba-icon">✗</span>Near-zero internal adoption</div>
+              </div>
+              <div class="ba-card ba-after" role="listitem">
+                <div class="ba-label after">After</div>
+                <div class="ba-item"><span class="ba-icon" style="color:var(--deep)">✓</span>Shared cross-functional
+                  content calendar</div>
+                <div class="ba-item"><span class="ba-icon" style="color:var(--deep)">✓</span>Self-serve onboarding with
+                  video tutorials</div>
+                <div class="ba-item"><span class="ba-icon" style="color:var(--deep)">✓</span>Department-specific content
+                  feeds</div>
+                <div class="ba-item"><span class="ba-icon" style="color:var(--deep)">✓</span>AEs sharing relevant,
+                  sector-specific posts</div>
+                <div class="ba-item"><span class="ba-icon" style="color:var(--deep)">✓</span>70+ employees actively
+                  using the platform</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 AUDIENCE -->
+        <article class="sec" aria-labelledby="s2">
+          <div class="sec-head">
+            <span class="sec-num" aria-hidden="true">02</span>
+            <h2 class="sec-title" id="s2">Understanding the audience</h2>
+            <span class="sec-label">Insight</span>
+          </div>
+          <div class="sec-body">
+            <p class="body">This project had two distinct internal audiences with completely different needs — and
+              getting the platform right meant understanding both.</p>
+            <p class="body"><strong>Account executives</strong> needed content that was immediately relevant to their
+              specific clients and sectors. If a post had nothing to do with their book of business, they'd scroll past
+              it and never return. The platform had to make relevance effortless, not something they had to hunt for.
+            </p>
+            <p class="body"><strong>Product marketing managers</strong> needed a structured way to funnel approved,
+              on-brand content into the platform without creating extra work. They were the supply side — and if the
+              workflow was too complex, content would dry up fast.</p>
+            <div class="pull-quote">"What content salespeople need to have credible conversations with clients on
+              LinkedIn — and how to make it frictionless enough that they'll actually use it."</div>
+            <div class="tags" role="list" aria-label="Audiences served">
+              <span class="tag t-sky" role="listitem">Account executives</span>
+              <span class="tag t-sky" role="listitem">Product marketing managers</span>
+              <span class="tag t-dark" role="listitem">Canadian sales org</span>
+              <span class="tag t-warm" role="listitem">Social selling</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 WHAT I BUILT -->
+        <article class="sec" aria-labelledby="s3">
+          <div class="sec-head">
+            <span class="sec-num" aria-hidden="true">03</span>
+            <h2 class="sec-title" id="s3">What I built &amp; owned</h2>
+            <span class="sec-label">My contribution</span>
+          </div>
+          <div class="sec-body">
+
+            <p class="body" style="margin-bottom:8px">The work had four distinct layers — each one a dependency for the
+              next:</p>
+
+            <nav aria-label="Content workflow diagram" role="img">
+              <div class="workflow"
+                aria-label="Workflow: Marketing feeds to Content Calendar, to GaggleAMP feeds, to AE shares on LinkedIn, resulting in LinkedIn reach">
+                <div class="wf-node">
+                  <div class="wf-node-title">Marketing</div>
+                  <div class="wf-node-sub">Content source</div>
+                </div>
+                <div class="wf-arrow" aria-hidden="true">→</div>
+                <div class="wf-node highlight-node">
+                  <div class="wf-node-title">Shared calendar</div>
+                  <div class="wf-node-sub">Cross-functional</div>
+                </div>
+                <div class="wf-arrow" aria-hidden="true">→</div>
+                <div class="wf-node highlight-node">
+                  <div class="wf-node-title">GaggleAMP feeds</div>
+                  <div class="wf-node-sub">By department</div>
+                </div>
+                <div class="wf-arrow" aria-hidden="true">→</div>
+                <div class="wf-node">
+                  <div class="wf-node-title">AE shares</div>
+                  <div class="wf-node-sub">On LinkedIn</div>
+                </div>
+                <div class="wf-arrow" aria-hidden="true">→</div>
+                <div class="wf-node" style="background:#edf4f9;border-color:var(--steel)">
+                  <div class="wf-node-title" style="color:var(--deep)">LinkedIn reach</div>
+                  <div class="wf-node-sub" style="color:var(--deep)">1.5× lift</div>
+                </div>
+              </div>
+            </nav>
+
+            <div class="steps" role="list" aria-label="Work completed">
+              <div class="step" role="listitem">
+                <div class="step-dot" aria-hidden="true">A</div>
+                <div>
+                  <div class="step-title">Cross-functional content workflow</div>
+                  <div class="step-body">Designed a shared content calendar that connected marketing, sales, and
+                    creative teams — replacing an ad hoc process with a predictable, structured pipeline. This was the
+                    foundation everything else depended on.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot" aria-hidden="true">B</div>
+                <div>
+                  <div class="step-title">GaggleAMP platform rebuild</div>
+                  <div class="step-body">Rebuilt the platform architecture entirely, organizing content into
+                    department-specific feeds so account executives could find posts relevant to their specific clients
+                    and sectors — rather than scrolling through content with no connection to their book of business.
+                  </div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot" aria-hidden="true">C</div>
+                <div>
+                  <div class="step-title">Self-serve onboarding program</div>
+                  <div class="step-body">Developed the full onboarding program independently — including step-by-step
+                    video tutorials and an FAQ guide — so employees could get up and running without needing
+                    hand-holding from the marketing team. This was critical: without adoption, the best content system
+                    in the world would have stayed dormant.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot" aria-hidden="true">D</div>
+                <div>
+                  <div class="step-title">National rollout — 70+ employees</div>
+                  <div class="step-body">Managed the rollout across the Canadian sales and marketing organization —
+                    reaching 70+ account executives and PMMs. Feedback from both audiences was largely positive, with a
+                    significant portion of the sales team engaging with the platform as part of their social selling
+                    process.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="viz-slot" role="img" aria-label="Visual placeholder for platform screenshot or workflow asset">
+              <div class="vz-title">📸 Insert: GaggleAMP platform screenshot or onboarding asset</div>
+              <div class="vz-sub">A screenshot of the rebuilt feed structure, or a frame from your video tutorial —
+                proves the depth of your ownership</div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- 04 IMPACT -->
+        <article class="sec" aria-labelledby="s4">
+          <div class="sec-head">
+            <span class="sec-num" aria-hidden="true">04</span>
+            <h2 class="sec-title" id="s4">Results</h2>
+            <span class="sec-label">Impact</span>
+          </div>
+          <div class="sec-body">
+            <div class="impact-grid" role="list" aria-label="Key results">
+              <div class="impact-block" role="listitem">
+                <div class="ib-num" aria-label="1.5 times">1.5×</div>
+                <div class="ib-label">Increase in Ricoh Canada's LinkedIn presence within two months of launch</div>
+              </div>
+              <div class="impact-block" role="listitem">
+                <div class="ib-num">70+</div>
+                <div class="ib-label">Sales reps and PMMs onboarded onto a channel with previously near-zero adoption
+                </div>
+              </div>
+              <div class="impact-block" role="listitem">
+                <div class="ib-num">0 → 1</div>
+                <div class="ib-label">Full platform built from scratch — content system, architecture, and onboarding
+                  all new</div>
+              </div>
+              <div class="impact-block" role="listitem">
+                <div class="ib-num">Active</div>
+                <div class="ib-label">Significant portion of sales team using the platform as part of their ongoing
+                  social selling</div>
+              </div>
+            </div>
+            <div class="highlight" style="margin-top:14px">
+              <strong>What made it work:</strong> The 1.5× result wasn't just from better content — it came from
+              removing the friction between great content and the people meant to share it. Architecture + onboarding +
+              workflow had to work together before the numbers could move.
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 LEARNINGS -->
+        <article class="sec" aria-labelledby="s5">
+          <div class="sec-head">
+            <span class="sec-num" aria-hidden="true">05</span>
+            <h2 class="sec-title" id="s5">What I learned</h2>
+            <span class="sec-label">Reflection</span>
+          </div>
+          <div class="sec-body">
+            <div class="steps" role="list" aria-label="Key learnings">
+              <div class="step" role="listitem">
+                <div class="step-dot" aria-hidden="true">1</div>
+                <div>
+                  <div class="step-title">Adoption is a design problem, not a communication problem</div>
+                  <div class="step-body">The platform had been available for months before I arrived. Sending a Slack
+                    message telling people to use it wouldn't have fixed anything. What fixed it was removing the
+                    reasons not to — unclear feeds, no onboarding, irrelevant content. Frictionless beats compelling
+                    every time.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot" aria-hidden="true">2</div>
+                <div>
+                  <div class="step-title">Marketing serves sales best when it anticipates their context</div>
+                  <div class="step-body">AEs don't have time to find content. The department-specific feed architecture
+                    was the most important structural decision I made — because relevance delivered at the right moment
+                    is what turns a passive tool into a daily habit.</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-dot" aria-hidden="true">3</div>
+                <div>
+                  <div class="step-title">Building from zero teaches you what infrastructure actually means</div>
+                  <div class="step-body">Having full ownership of a 0-to-1 build — no existing system to inherit, no
+                    playbook to follow — taught me how to sequence decisions. You can't train people on a platform that
+                    isn't organized. You can't fill an organized platform without a content workflow. Order matters.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside aria-label="Project details">
+
+        <div class="scard">
+          <div class="sc-head">Project details</div>
+          <div class="sc-body">
+            <div class="sc-row"><span class="sc-key">Company</span><span class="sc-val">Ricoh Canada</span></div>
+            <div class="sc-row"><span class="sc-key">Role</span><span class="sc-val">Marketing Specialist Intern</span>
+            </div>
+            <div class="sc-row"><span class="sc-key">Pillar</span><span class="sc-val">Social Media &amp; Brand</span>
+            </div>
+            <div class="sc-row"><span class="sc-key">Scope</span><span class="sc-val">National (Canada)</span></div>
+            <div class="sc-row"><span class="sc-key">Platform</span><span class="sc-val">GaggleAMP + LinkedIn</span>
+            </div>
+            <div class="sc-row"><span class="sc-key">Team size</span><span class="sc-val">Cross-functional</span></div>
+          </div>
+        </div>
+
+        <div class="scard">
+          <div class="sc-head">Skills demonstrated</div>
+          <div class="skill-wrap" role="list" aria-label="Skills used">
+            <span class="skill" role="listitem">Employee advocacy</span>
+            <span class="skill" role="listitem">Platform architecture</span>
+            <span class="skill" role="listitem">Content strategy</span>
+            <span class="skill" role="listitem">Sales enablement</span>
+            <span class="skill" role="listitem">Onboarding design</span>
+            <span class="skill" role="listitem">Cross-functional workflow</span>
+            <span class="skill" role="listitem">Social selling</span>
+            <span class="skill" role="listitem">GaggleAMP</span>
+            <span class="skill" role="listitem">LinkedIn strategy</span>
+            <span class="skill" role="listitem">Change management</span>
+          </div>
+        </div>
+
+        <div class="scard">
+          <div class="sc-head">Relevance by industry</div>
+          <div class="sc-body" role="list" aria-label="Industry relevance">
+            <div class="ind-row" role="listitem">
+              <span class="ind-name">💻 Tech</span>
+              <div class="ind-bar-wrap" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                aria-label="Tech: very strong fit">
+                <div class="ind-bar" style="width:90%;background:var(--deep)"></div>
+              </div>
+            </div>
+            <div class="ind-row" role="listitem">
+              <span class="ind-name">🏦 Banking</span>
+              <div class="ind-bar-wrap" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
+                aria-label="Banking: strong fit">
+                <div class="ind-bar" style="width:85%;background:var(--steel)"></div>
+              </div>
+            </div>
+            <div class="ind-row" role="listitem">
+              <span class="ind-name">🏥 Healthcare</span>
+              <div class="ind-bar-wrap" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
+                aria-label="Healthcare: moderate fit">
+                <div class="ind-bar" style="width:65%;background:var(--sky)"></div>
+              </div>
+            </div>
+            <div class="ind-row" role="listitem">
+              <span class="ind-name">🎵 Music</span>
+              <div class="ind-bar-wrap" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+                aria-label="Music: low to moderate fit">
+                <div class="ind-bar" style="width:45%;background:var(--warm)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scard">
+          <div class="sc-head">Visuals to add</div>
+          <div class="sc-body" style="font-size:10px;color:var(--color-text-secondary);line-height:1.85">
+            <div>✦ GaggleAMP feed structure screenshot</div>
+            <div>✦ Frame from your onboarding video</div>
+            <div>✦ Content calendar template (blurred)</div>
+            <div>✦ LinkedIn before/after reach numbers</div>
+            <div
+              style="margin-top:9px;padding:8px 10px;background:var(--color-background-secondary);border-radius:6px;font-size:9px;color:var(--color-text-tertiary)">
+              Blur employee names and any proprietary Ricoh content before publishing.</div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- FOOTER NAV -->
+    <nav class="footer-nav" aria-label="Case study navigation">
+      <button class="fn-btn fn-back" aria-label="Previous: Microsoft case study">← Microsoft</button>
+      <button class="fn-btn fn-next" aria-label="Next case study: Analytics and Strategy">Next: CIBC →</button>
+    </nav>
+
+  </main>
+</body>
+
+</html>
